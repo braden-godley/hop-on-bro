@@ -209,7 +209,7 @@ function App() {
         </div>
       )}
 
-      <p className="text-lg text-gray-600 text-center mb-8">Generate the perfect message to convince your friends to join your game!</p>
+      <p className="text-lg text-gray-600 text-center mb-8">Guilt trip your friends into joining your game!</p>
       
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
