@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
 function App() {
+  const [userName, setUserName] = useState('')
   const [friendName, setFriendName] = useState('')
   const [gameName, setGameName] = useState('')
   const [contentType, setContentType] = useState('casual')
@@ -53,6 +54,7 @@ function App() {
 
       const prompt = `${getPromptForStyle(contentType)}
       
+      Your name: ${userName}
       Friend's name: ${friendName}
       Game: ${gameName}
       
@@ -89,6 +91,19 @@ function App() {
       <p className="text-lg text-gray-600 text-center mb-8">Generate the perfect message to convince your friends to join your game!</p>
       
       <form onSubmit={handleSubmit} className="space-y-6">
+        <div>
+          <label htmlFor="userName" className="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
+          <input
+            type="text"
+            id="userName"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+            placeholder="Enter your name"
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
+
         <div>
           <label htmlFor="friendName" className="block text-sm font-medium text-gray-700 mb-2">Friend's Name</label>
           <input
