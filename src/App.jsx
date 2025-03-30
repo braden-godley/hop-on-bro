@@ -84,13 +84,13 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <h1>Hop On Generator</h1>
-      <p className="subtitle">Generate the perfect message to convince your friends to join your game!</p>
+    <div className="max-w-4xl mx-auto px-4 py-8">
+      <h1 className="text-4xl font-bold text-center mb-4">Hop On Generator</h1>
+      <p className="text-lg text-gray-600 text-center mb-8">Generate the perfect message to convince your friends to join your game!</p>
       
-      <form onSubmit={handleSubmit} className="form">
-        <div className="form-group">
-          <label htmlFor="friendName">Friend's Name</label>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div>
+          <label htmlFor="friendName" className="block text-sm font-medium text-gray-700 mb-2">Friend's Name</label>
           <input
             type="text"
             id="friendName"
@@ -98,11 +98,12 @@ function App() {
             onChange={(e) => setFriendName(e.target.value)}
             placeholder="Enter your friend's name"
             required
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="gameName">Game Name</label>
+        <div>
+          <label htmlFor="gameName" className="block text-sm font-medium text-gray-700 mb-2">Game Name</label>
           <input
             type="text"
             id="gameName"
@@ -110,16 +111,18 @@ function App() {
             onChange={(e) => setGameName(e.target.value)}
             placeholder="Enter the game name"
             required
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="contentType">Message Style</label>
+        <div>
+          <label htmlFor="contentType" className="block text-sm font-medium text-gray-700 mb-2">Message Style</label>
           <select
             id="contentType"
             value={contentType}
             onChange={(e) => setContentType(e.target.value)}
             required
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           >
             {contentTypes.map((type) => (
               <option key={type.value} value={type.value}>
@@ -129,21 +132,25 @@ function App() {
           </select>
         </div>
 
-        <button type="submit" className="generate-button" disabled={isLoading}>
+        <button 
+          type="submit" 
+          disabled={isLoading}
+          className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        >
           {isLoading ? 'Generating...' : 'Generate Message'}
         </button>
       </form>
 
       {error && (
-        <div className="error-message">
+        <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-md text-red-700">
           {error}
         </div>
       )}
 
       {generatedMessage && (
-        <div className="message-container">
-          <h2>Your Generated Message:</h2>
-          <div className="message-box markdown-content">
+        <div className="mt-8">
+          <h2 className="text-2xl font-semibold mb-4">Your Generated Message:</h2>
+          <div className="p-6 bg-white border border-gray-200 rounded-lg shadow-sm prose max-w-none">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {generatedMessage}
             </ReactMarkdown>
