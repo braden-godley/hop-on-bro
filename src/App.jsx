@@ -2,7 +2,6 @@ import { useState } from 'react'
 import OpenAI from 'openai'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import './App.css'
 
 function App() {
   const [friendName, setFriendName] = useState('')
