@@ -28,7 +28,7 @@ function App() {
   const getPromptForStyle = (style) => {
     const prompts = {
       casual: "Write a casual, friendly message to convince someone to join a game. Keep it light and fun. Keep it to one section without a title.",
-      scientific: "Write a scientific whitepaper abstract convincing someone to join a game. Include statistical analysis with p-values < 0.05, chi-squared tests, and regression models demonstrating strong correlation between gaming participation and social wellbeing metrics. Use formal academic language with methodology, data analysis, and statistically significant results. Include references to academic papers and studies.",
+      scientific: "Write a scientific whitepaper abstract convincing someone to join a game. Include statistical analysis with p-values < 0.05, chi-squared tests, and regression models demonstrating strong correlation between gaming participation and social wellbeing metrics. Use formal academic language with methodology, data analysis, and statistically significant results. Include references to academic papers and studies. Use a proper title for an academic paper.",
       celtic: "Write a Celtic-style poem to convince someone to join a game. Use mystical language, nature metaphors, and traditional Celtic poetic devices. Keep it to one section without a title.",
       pirate: "Write a pirate shanty to convince someone to join a game. Use nautical terms, pirate slang, and a sing-song rhythm. Keep it to one section without a title.", 
       shakespeare: "Write a Shakespearean sonnet convincing someone to join a game. Use iambic pentameter, Shakespearean language, and include a volta. Keep it to one section without a title.",
@@ -52,20 +52,30 @@ function App() {
         dangerouslyAllowBrowser: true,
       })
 
-      const prompt = `${getPromptForStyle(contentType)}
-      
-      Your name: ${userName}
-      Friend's name: ${friendName}
-      Game: ${gameName}
-      
-      Generate a flirty, playful message that begs ${friendName} to join ${gameName}. Include some subtle romantic tension and suggestive undertones while staying tasteful. Make them feel special and desired. Don't use emojis. Use markdown formatting to enhance the message's presentation.`
+      const contentTypeName = contentTypes.find(type => type.value === contentType)?.label || 'casual'
+
+      const prompt = `
+        Your name: ${userName}
+        Friend's name: ${friendName}
+        Game: ${gameName}
+        
+        Generate a flirty, playful message that begs ${friendName} to join ${userName} in ${gameName}. 
+        Include some subtle romantic tension and suggestive undertones while staying tasteful. 
+        Add a touch of clinginess and at least one guilt trip to make it slightly uncomfortable. 
+        Don't use emojis. 
+        Use markdown formatting to enhance the message's presentation.
+        Try to nail the structure and typical content of a ${contentTypeName}.
+        ${getPromptForStyle(contentType)}
+      `
 
       const completion = await openai.chat.completions.create({
         model: "gpt-4o-mini", 
         messages: [
           {
             role: "system",
-            content: "You are a flirty and playful message generator that creates engaging messages with romantic undertones to convince friends to join games. Your messages should include subtle hints of attraction while remaining appropriate. Use markdown formatting to enhance the presentation of your messages, including headers, emphasis, lists, and line breaks where appropriate."
+            content: `You are a flirty, playful, and somewhat clingy person that needs to write a message with romantic undertones to convince your friend to join a game. 
+              Your messages should include subtle hints of attraction while remaining appropriate, with a touch of clinginess and guilt trips to make it slightly uncomfortable. 
+              Use markdown formatting to enhance the presentation of your messages, including headers, emphasis, lists, and line breaks where appropriate.`
           },
           {
             role: "user",
