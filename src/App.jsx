@@ -22,7 +22,8 @@ function App() {
     { value: 'rap', label: 'Rap Verse' },
     { value: 'medieval', label: 'Medieval Proclamation' },
     { value: 'detective', label: 'Detective Story' },
-    { value: 'superhero', label: 'Superhero Call' }
+    { value: 'superhero', label: 'Superhero Call' },
+    { value: 'email', label: 'Marketing Email' }
   ]
 
   const getPromptForStyle = (style) => {
@@ -36,7 +37,8 @@ function App() {
       rap: "Write a rap verse to convince someone to join a game. Include rhymes, wordplay, and a strong beat. Keep it to one section without a title.",
       medieval: "Write a medieval proclamation to convince someone to join a game. Use archaic language, formal titles, and royal decree style. Keep it to one section without a title.",
       detective: "Write a detective story opening to convince someone to join a game. Use noir style, mystery elements, and dramatic tension. Keep it to one section without a title.",
-      superhero: "Write a superhero call to action to convince someone to join a game. Use comic book style, dramatic language, and heroic themes. Keep it to one section without a title."
+      superhero: "Write a superhero call to action to convince someone to join a game. Use comic book style, dramatic language, and heroic themes. Keep it to one section without a title.",
+      email: "Write a marketing email campaign to convince someone to join a game. Use compelling subject lines, clear value propositions, engaging call-to-actions, and persuasive copywriting techniques. Include proper email sections like header, body, and footer. Keep the tone professional yet friendly."
     }
     return prompts[style] || prompts.casual
   }
@@ -62,6 +64,7 @@ function App() {
         Generate a flirty, playful message that begs ${friendName} to join ${userName} in ${gameName}. 
         Include some subtle romantic tension and suggestive undertones while staying tasteful. 
         Add a touch of clinginess and at least one guilt trip to make it slightly uncomfortable. 
+        Don't explicitly mention you're clingy or that the conversation is uncomfortable.
         Don't use emojis. 
         Use markdown formatting to enhance the message's presentation.
         Try to nail the structure and typical content of a ${contentTypeName}.
