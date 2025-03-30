@@ -24,12 +24,27 @@ function App() {
     } else {
       setShowSettings(true) // Show settings if no API key is found
     }
+
+    // Load saved input values
+    const savedUserName = localStorage.getItem('userName')
+    const savedFriendName = localStorage.getItem('friendName')
+    const savedGameName = localStorage.getItem('gameName')
+    
+    if (savedUserName) setUserName(savedUserName)
+    if (savedFriendName) setFriendName(savedFriendName)
+    if (savedGameName) setGameName(savedGameName)
   }, [])
 
   const handleApiKeyChange = (e) => {
     const newKey = e.target.value
     setApiKey(newKey)
     localStorage.setItem('openaiApiKey', newKey)
+  }
+
+  const handleInputChange = (e, setter, storageKey) => {
+    const value = e.target.value
+    setter(value)
+    localStorage.setItem(storageKey, value)
   }
 
   const contentTypes = [
@@ -69,7 +84,7 @@ function App() {
       viking: "Write a Viking-style rant (4-5 sentences) to convince someone to join a game. Use Norse mythology and Viking language.",
       pirate: "Write as a pirate (2-3 sentences) to convince someone to join a game. Use nautical terms, pirate slang.", 
       shakespeare: "Write a Shakespearean sonnet (14 lines) convincing someone to join a game. Use iambic pentameter, Shakespearean language, and include a volta.",
-      haiku: "Write a haiku (3 lines) to convince someone to join a game. Follow the 5-7-5 syllable pattern.",
+      haiku: "Write a haiku (3 lines) to convince someone to join a game. Follow the 5-7-5 syllable pattern. Only write the haiku, and a one sentence plea to join the game.",
       rap: "Write a rap verse (8-12 lines) to convince someone to join a game. Include rhymes, wordplay, and a strong beat.",
       medieval: "Write a medieval proclamation (4-5 sentences) to convince someone to join a game. Use archaic language, formal titles, and royal decree style.",
       detective: "Write a detective story opening (3-4 sentences) to convince someone to join a game. Use noir style, mystery elements, and dramatic tension.",
@@ -115,6 +130,7 @@ function App() {
         The desperation level is ${desperationLevel} out of 10 - adjust the clinginess and guilt trips accordingly.
         Don't explicitly mention you're clingy or that the conversation is uncomfortable.
         Don't use emojis. 
+        Don't add a title to the message unless it's essential for the format, such as a scientific paper.
         Use markdown formatting to enhance the message's presentation.
         Try to nail the structure and typical content of a ${contentTypeName}.
         ${getPromptForStyle(contentType)}
@@ -182,6 +198,8 @@ function App() {
               value={apiKey}
               onChange={handleApiKeyChange}
               placeholder="Enter your OpenAI API key"
+              autoComplete="off"
+              data-1p-ignore
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
             <p className="mt-2 text-sm text-gray-500">
@@ -200,7 +218,7 @@ function App() {
             type="text"
             id="userName"
             value={userName}
-            onChange={(e) => setUserName(e.target.value)}
+            onChange={(e) => handleInputChange(e, setUserName, 'userName')}
             placeholder="Enter your name"
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
@@ -213,7 +231,7 @@ function App() {
             type="text"
             id="friendName"
             value={friendName}
-            onChange={(e) => setFriendName(e.target.value)}
+            onChange={(e) => handleInputChange(e, setFriendName, 'friendName')}
             placeholder="Enter your friend's name"
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
@@ -226,7 +244,7 @@ function App() {
             type="text"
             id="gameName"
             value={gameName}
-            onChange={(e) => setGameName(e.target.value)}
+            onChange={(e) => handleInputChange(e, setGameName, 'gameName')}
             placeholder="Enter the game name"
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
