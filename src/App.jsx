@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import OpenAI from 'openai'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
@@ -13,6 +13,24 @@ function App() {
   const [error, setError] = useState('')
   const [desperationLevel, setDesperationLevel] = useState(5)
   const [copySuccess, setCopySuccess] = useState(false)
+  const [apiKey, setApiKey] = useState('')
+  const [showSettings, setShowSettings] = useState(false)
+
+  useEffect(() => {
+    // Load API key from localStorage on component mount
+    const storedKey = localStorage.getItem('openaiApiKey')
+    if (storedKey) {
+      setApiKey(storedKey)
+    } else {
+      setShowSettings(true) // Show settings if no API key is found
+    }
+  }, [])
+
+  const handleApiKeyChange = (e) => {
+    const newKey = e.target.value
+    setApiKey(newKey)
+    localStorage.setItem('openaiApiKey', newKey)
+  }
 
   const contentTypes = [
     { value: 'casual', label: 'Casual Message' },
@@ -71,9 +89,15 @@ function App() {
     setIsLoading(true)
     setError('')
     
+    if (!apiKey) {
+      setError('Please enter your OpenAI API key in settings')
+      setIsLoading(false)
+      return
+    }
+    
     try {
       const openai = new OpenAI({
-        apiKey: import.meta.env.VITE_OPENAI_API_KEY,
+        apiKey: apiKey,
         dangerouslyAllowBrowser: true,
       })
 
@@ -135,7 +159,38 @@ function App() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-center mb-4">Hop On, Bro</h1>
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-4xl font-bold">Hop On, Bro</h1>
+        <button
+          onClick={() => setShowSettings(!showSettings)}
+          className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors"
+        >
+          {showSettings ? 'Hide Settings' : 'Settings'}
+        </button>
+      </div>
+
+      {showSettings && (
+        <div className="mb-8 p-6 bg-white border border-gray-200 rounded-lg shadow-sm">
+          <h2 className="text-2xl font-semibold mb-4">Settings</h2>
+          <div>
+            <label htmlFor="apiKey" className="block text-sm font-medium text-gray-700 mb-2">
+              OpenAI API Key
+            </label>
+            <input
+              type="password"
+              id="apiKey"
+              value={apiKey}
+              onChange={handleApiKeyChange}
+              placeholder="Enter your OpenAI API key"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+            <p className="mt-2 text-sm text-gray-500">
+              Your API key is stored locally and never sent to our servers.
+            </p>
+          </div>
+        </div>
+      )}
+
       <p className="text-lg text-gray-600 text-center mb-8">Generate the perfect message to convince your friends to join your game!</p>
       
       <form onSubmit={handleSubmit} className="space-y-6">
