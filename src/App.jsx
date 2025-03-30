@@ -26,16 +26,16 @@ function App() {
 
   const getPromptForStyle = (style) => {
     const prompts = {
-      casual: "Write a casual, friendly message to convince someone to join a game. Keep it light and fun.",
+      casual: "Write a casual, friendly message to convince someone to join a game. Keep it light and fun. Keep it to one section without a title.",
       scientific: "Write a scientific whitepaper abstract convincing someone to join a game. Include statistical analysis with p-values < 0.05, chi-squared tests, and regression models demonstrating strong correlation between gaming participation and social wellbeing metrics. Use formal academic language with methodology, data analysis, and statistically significant results. Include references to academic papers and studies.",
-      celtic: "Write a Celtic-style poem to convince someone to join a game. Use mystical language, nature metaphors, and traditional Celtic poetic devices.",
-      pirate: "Write a pirate shanty to convince someone to join a game. Use nautical terms, pirate slang, and a sing-song rhythm.",
-      shakespeare: "Write a Shakespearean sonnet convincing someone to join a game. Use iambic pentameter, Shakespearean language, and include a volta.",
-      haiku: "Write a haiku to convince someone to join a game. Follow the 5-7-5 syllable pattern.",
-      rap: "Write a rap verse to convince someone to join a game. Include rhymes, wordplay, and a strong beat.",
-      medieval: "Write a medieval proclamation to convince someone to join a game. Use archaic language, formal titles, and royal decree style.",
-      detective: "Write a detective story opening to convince someone to join a game. Use noir style, mystery elements, and dramatic tension.",
-      superhero: "Write a superhero call to action to convince someone to join a game. Use comic book style, dramatic language, and heroic themes."
+      celtic: "Write a Celtic-style poem to convince someone to join a game. Use mystical language, nature metaphors, and traditional Celtic poetic devices. Keep it to one section without a title.",
+      pirate: "Write a pirate shanty to convince someone to join a game. Use nautical terms, pirate slang, and a sing-song rhythm. Keep it to one section without a title.", 
+      shakespeare: "Write a Shakespearean sonnet convincing someone to join a game. Use iambic pentameter, Shakespearean language, and include a volta. Keep it to one section without a title.",
+      haiku: "Write a haiku to convince someone to join a game. Follow the 5-7-5 syllable pattern. Keep it to one section without a title.",
+      rap: "Write a rap verse to convince someone to join a game. Include rhymes, wordplay, and a strong beat. Keep it to one section without a title.",
+      medieval: "Write a medieval proclamation to convince someone to join a game. Use archaic language, formal titles, and royal decree style. Keep it to one section without a title.",
+      detective: "Write a detective story opening to convince someone to join a game. Use noir style, mystery elements, and dramatic tension. Keep it to one section without a title.",
+      superhero: "Write a superhero call to action to convince someone to join a game. Use comic book style, dramatic language, and heroic themes. Keep it to one section without a title."
     }
     return prompts[style] || prompts.casual
   }
@@ -56,22 +56,22 @@ function App() {
       Friend's name: ${friendName}
       Game: ${gameName}
       
-      Generate a message that matches the style and convinces ${friendName} to join ${gameName}. Use markdown formatting to enhance the message's presentation.`
+      Generate a flirty, playful message that begs ${friendName} to join ${gameName}. Include some subtle romantic tension and suggestive undertones while staying tasteful. Make them feel special and desired. Don't use emojis. Use markdown formatting to enhance the message's presentation.`
 
       const completion = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
+        model: "gpt-4o-mini", 
         messages: [
           {
             role: "system",
-            content: "You are a creative message generator that creates engaging, fun messages in various styles to convince friends to join games. Use markdown formatting to enhance the presentation of your messages, including headers, emphasis, lists, and line breaks where appropriate."
+            content: "You are a flirty and playful message generator that creates engaging messages with romantic undertones to convince friends to join games. Your messages should include subtle hints of attraction while remaining appropriate. Use markdown formatting to enhance the presentation of your messages, including headers, emphasis, lists, and line breaks where appropriate."
           },
           {
             role: "user",
             content: prompt
           }
         ],
-        temperature: 0.7,
-        max_tokens: 500
+        temperature: 0.8,
+        max_tokens: 1000
       })
 
       setGeneratedMessage(completion.choices[0].message.content)
