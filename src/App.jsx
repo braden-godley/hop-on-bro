@@ -90,15 +90,11 @@ function App() {
       const contentTypeName = contentTypes.find(type => type.value === contentType)?.label || 'casual'
       const prompt = generatePrompt(userName, friendName, gameName, desperationLevel, contentType, contentTypeName)
 
+      console.log(prompt)
+
       const completion = await openai.chat.completions.create({
-        model: "gpt-4o-mini", 
+        model: "gpt-4o",
         messages: [
-          {
-            role: "system",
-            content: `You are a flirty, playful, and somewhat clingy person that needs to write a message with romantic undertones to convince your friend to join a game. 
-              Your messages should include subtle hints of attraction while remaining appropriate, with a touch of clinginess and guilt trips to make it slightly uncomfortable. 
-              Use markdown formatting to enhance the presentation of your messages, including headers, emphasis, lists, and line breaks where appropriate.`
-          },
           {
             role: "user",
             content: prompt
