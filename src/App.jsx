@@ -7,9 +7,9 @@ import { contentTypes, loadingMessages, tones } from './constants/content'
 import { generatePrompt } from './utils/promptUtils'
 
 // Create UI-friendly tones array
-const toneOptions = Object.entries(tones).map(([value, { label }]) => ({
-  value,
-  label
+const toneOptions = tones.map(tone => ({
+  value: tone.value,
+  label: tone.label
 }))
 
 function App() {

@@ -6,17 +6,18 @@ export const getPromptForStyle = (style) => {
 }
 
 export const generatePrompt = (userName, friendName, gameName, toneType, contentType, contentTypeName) => {
+  const tone = tones.find(t => t.value === toneType)
   return `
+    ${tone.prompt}.
+    Don't add a title to the message unless it's essential for the format, such as a scientific paper.
+    Use markdown formatting to enhance the message's presentation.
+    Try to nail the structure and typical content of a ${contentTypeName}.
+
+    ${getPromptForStyle(contentType)}
+    ${contentType !== 'annoyingEmojis' ? 'Don\'t use ANY emojis. ' : ''}
     Your name: ${userName}
     Friend's name: ${friendName}
     Game: ${gameName}
     Message Style: ${toneType}
-    
-    ${tones[toneType].prompt}. Don't explicitly mention the tone type in the message.
-    Don't add a title to the message unless it's essential for the format, such as a scientific paper.
-    Use markdown formatting to enhance the message's presentation.
-    Try to nail the structure and typical content of a ${contentTypeName}.
-    ${contentType !== 'annoyingEmojis' ? 'Don\'t use ANY emojis. ' : ''}
-    ${getPromptForStyle(contentType)}
   `
 } 

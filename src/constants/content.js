@@ -22,7 +22,7 @@ export const contentTypes = [
   { 
     value: 'haiku', 
     label: 'Haiku',
-    prompt: "Write a haiku (3 lines) to convince someone to join a game. Follow the 5-7-5 syllable pattern. Only write the haiku, and a one sentence plea to join the game."
+    prompt: "Write a haiku (3 lines) to convince someone to join a game. Follow the 5-7-5 syllable pattern. Do not write ANYTHING except the haiku itself and a short 1-2 sentence plea to join the game."
   },
   { 
     value: 'rap', 
@@ -68,6 +68,11 @@ export const contentTypes = [
     value: 'annoyingEmojis',
     label: 'Annoying Emojis',
     prompt: "Write a message with annoying emojis (3-4 sentences) to convince someone to join a game. Spam tons of emojis. Way too many emojis. Like at least 5 emojies per word."
+  },
+  {
+    value: 'coverLetter',
+    label: 'Cover Letter',
+    prompt: "Write a cover letter (150-200 words) to \"apply\" to play a game with the friend. Use professional cover letter language, and make it sound like you are applying to a job. Don't use placeholders like [Your Name]. Include experience, skills, and any other relevant information. Don't include address, phone, date, or any other contact info"
   }
 ]
 
@@ -82,25 +87,35 @@ export const loadingMessages = [
   "Putting on the finishing touches..."
 ]
 
-export const tones = {
-  'flirty': {
-    prompt: 'Generate a flirty, playful message that subtly hints at attraction while staying tasteful.',
-    label: 'Flirty'
+export const tones = [
+  {
+    value: 'flirty',
+    label: 'Flirty',
+    prompt: 'Generate a flirty, playful message that subtly hints at attraction while staying tasteful.'
   },
-  'guilt-trippy': {
-    prompt: 'Generate a message that uses guilt trips and emotional manipulation to convince them to join.',
-    label: 'Guilt Trippy'
+  {
+    value: 'guilt-trippy',
+    label: 'Guilt Trippy',
+    prompt: 'Generate a message that uses guilt trips and emotional manipulation to convince them to join.'
   },
-  'jealous': {
-    prompt: 'Generate a message that subtly expresses jealousy and frustration about them hanging out with other people instead of joining your game.',
-    label: 'Jealous'
+  {
+    value: 'jealous',
+    label: 'Jealous',
+    prompt: 'Generate a message that subtly expresses jealousy and frustration about them hanging out with other people instead of joining your game.'
   },
-  'gaslighting': {
-    prompt: 'Generate a message that playfully questions their memory and perception, suggesting they actually promised to join the game but must have forgotten. Use subtle misdirection and "are you sure?" moments while keeping it light and humorous.',
-    label: 'Gaslighting'
+  {
+    value: 'gaslighting',
+    label: 'Gaslighting',
+    prompt: 'Generate a message that playfully questions their memory and perception, suggesting they actually promised to join the game but must have forgotten. Use subtle misdirection and "are you sure?" moments while keeping it light and humorous.'
   },
-  'blackmailing': {
-    prompt: 'Generate a message that makes vague, playful threats about revealing unspecified secrets or information. Keep all threats completely non-specific, like "it would be a shame if certain things came to light". Never mention any actual secrets or details.',
-    label: 'Blackmailing'
+  {
+    value: 'blackmailing',
+    label: 'Blackmailing',
+    prompt: 'Generate a message that makes vague, playful threats about revealing unspecified secrets or information. Keep all threats completely non-specific, like "it would be a shame if certain things came to light". Never mention any actual secrets or details.'
+  },
+  {
+    value: 'cocky',
+    label: 'Cocky',
+    prompt: 'Generate a message that is very confident and self-assured, while downplaying and minimizing the friend and their abilities. Imply they need you because they suck so bad. Don\'t even make this proposal sound appealing or that they have a choice at all. They have to play with you or else.'
   }
-} 
+] 
