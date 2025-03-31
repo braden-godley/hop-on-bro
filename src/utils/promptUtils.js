@@ -19,8 +19,8 @@ export const getPromptForStyle = (style) => {
   return prompts[style] || prompts.casual
 }
 
-export const generatePrompt = (userName, friendName, gameName, desperationLevel, contentType, contentTypeName) => {
-  const stylePrompts = {
+export const generatePrompt = (userName, friendName, gameName, toneType, contentType, contentTypeName) => {
+  const tones = {
     'flirty': 'Generate a flirty, playful message that subtly hints at attraction while staying tasteful.',
     'guilt-trippy': 'Generate a message that uses guilt trips and emotional manipulation to convince them to join.',
     'jealous': 'Generate a message that subtly expresses jealousy and frustration about them hanging out with other people instead of joining your game.'
@@ -30,9 +30,9 @@ export const generatePrompt = (userName, friendName, gameName, desperationLevel,
     Your name: ${userName}
     Friend's name: ${friendName}
     Game: ${gameName}
-    Message Style: ${desperationLevel}
+    Message Style: ${toneType}
     
-    ${stylePrompts[desperationLevel] || stylePrompts['flirty']}
+    ${tones[toneType] || tones['flirty']}
     Don't use emojis. 
     Don't add a title to the message unless it's essential for the format, such as a scientific paper.
     Use markdown formatting to enhance the message's presentation.
