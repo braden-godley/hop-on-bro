@@ -43,5 +43,9 @@ export const tones = {
   'gaslighting': {
     prompt: 'Generate a message that playfully questions their memory and perception, suggesting they actually promised to join the game but must have forgotten. Use subtle misdirection and "are you sure?" moments while keeping it light and humorous.',
     label: 'Gaslighting'
+  },
+  'blackmailing': {
+    prompt: 'Generate a message that makes vague, playful threats about revealing unspecified secrets or information. Keep all threats completely non-specific, like "it would be a shame if certain things came to light". Never mention any actual secrets or details.',
+    label: 'Blackmailing'
   }
 } 
