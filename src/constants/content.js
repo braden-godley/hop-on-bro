@@ -82,7 +82,7 @@ export const contentTypes = [
   {
     value: 'jordanPeterson',
     label: 'Jordan Peterson',
-    prompt: "Write a message (5-6 sentences) in the style of Jordan Peterson. Focus on the importance of personal responsibility, integrity, and the need to be true to oneself. Use phrases like 'you must', 'you should', and 'you have a duty to'. Make it clear that the friend is not taking responsibility for their own life and that they need to change. The overall tone should be authoritarian and demeaning while pretending to help them 'become a man' by joining your game. Talk about biblical references and the importance of tradition. Make it clear that the friend is not living up to their potential and that they need to change."
+    prompt: "Write a message (5-6 sentences) in the style of Jordan Peterson. Focus on the importance of personal responsibility, integrity, and the need to be true to oneself. Use phrases like 'you must', 'you should', and 'you have a duty to'. Make it clear that the friend is not taking responsibility for their own life and that they need to change. Suggest that they clean their room. The overall tone should be authoritarian and demeaning while pretending to help them 'become a man' by joining your game. Talk about biblical references and the importance of tradition. Make it clear that the friend is not living up to their potential and that they need to change."
   },
   {
     value: 'mafioso',
