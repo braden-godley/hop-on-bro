@@ -12,11 +12,11 @@ export const generatePrompt = (userName, friendName, gameName, toneType, content
     Game: ${gameName}
     Message Style: ${toneType}
     
-    ${tones[toneType].prompt}
-    Don't use emojis. 
+    ${tones[toneType].prompt}. Don't explicitly mention the tone type in the message.
     Don't add a title to the message unless it's essential for the format, such as a scientific paper.
     Use markdown formatting to enhance the message's presentation.
     Try to nail the structure and typical content of a ${contentTypeName}.
+    ${contentType !== 'annoyingEmojis' ? 'Don\'t use ANY emojis. ' : ''}
     ${getPromptForStyle(contentType)}
   `
 } 
