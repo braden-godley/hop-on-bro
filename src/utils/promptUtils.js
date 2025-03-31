@@ -20,17 +20,19 @@ export const getPromptForStyle = (style) => {
 }
 
 export const generatePrompt = (userName, friendName, gameName, desperationLevel, contentType, contentTypeName) => {
+  const stylePrompts = {
+    'flirty': 'Generate a flirty, playful message that subtly hints at attraction while staying tasteful.',
+    'guilt-trippy': 'Generate a message that uses guilt trips and emotional manipulation to convince them to join.',
+    'jealous': 'Generate a message that subtly expresses jealousy and frustration about them hanging out with other people instead of joining your game.'
+  }
+
   return `
     Your name: ${userName}
     Friend's name: ${friendName}
     Game: ${gameName}
-    Desperation Level: ${desperationLevel}/10
+    Message Style: ${desperationLevel}
     
-    Generate a flirty, playful message that begs ${friendName} to join ${userName} in ${gameName}. 
-    Include some subtle romantic tension and suggestive undertones while staying tasteful. 
-    Add a touch of clinginess and at least one guilt trip to make it slightly uncomfortable. 
-    The desperation level is ${desperationLevel} out of 10 - adjust the clinginess and guilt trips accordingly.
-    Don't explicitly mention you're clingy or that the conversation is uncomfortable.
+    ${stylePrompts[desperationLevel] || stylePrompts['flirty']}
     Don't use emojis. 
     Don't add a title to the message unless it's essential for the format, such as a scientific paper.
     Use markdown formatting to enhance the message's presentation.

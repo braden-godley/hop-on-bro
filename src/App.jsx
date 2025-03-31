@@ -14,7 +14,7 @@ function App() {
   const [generatedMessage, setGeneratedMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
-  const [desperationLevel, setDesperationLevel] = useState(5)
+  const [desperationLevel, setDesperationLevel] = useState('flirty')
   const [copySuccess, setCopySuccess] = useState(false)
   const [apiKey, setApiKey] = useState('')
   const [showSettings, setShowSettings] = useState(false)
@@ -148,7 +148,7 @@ function App() {
         isLoading={isLoading}
         onInputChange={handleInputChange}
         onContentTypeChange={(e) => setContentType(e.target.value)}
-        onDesperationLevelChange={(e) => setDesperationLevel(parseInt(e.target.value))}
+        onDesperationLevelChange={(e) => setDesperationLevel(e.target.value)}
         onSubmit={handleSubmit}
       />
 

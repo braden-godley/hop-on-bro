@@ -73,20 +73,42 @@ const MessageForm = ({
 
       <div>
         <label htmlFor="desperationLevel" className="block text-sm font-medium text-gray-700 mb-2">
-          Desperation Level: {desperationLevel}/10
+          Tone
         </label>
-        <input
-          type="range"
-          id="desperationLevel"
-          min="1"
-          max="10"
-          value={desperationLevel}
-          onChange={onDesperationLevelChange}
-          className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-        />
-        <div className="flex justify-between text-xs text-gray-500 mt-1">
-          <span>Casual</span>
-          <span>Desperate</span>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={() => onDesperationLevelChange({ target: { value: 'flirty' } })}
+            className={`flex-1 py-2 px-4 rounded-md border transition-colors ${
+              desperationLevel === 'flirty'
+                ? 'bg-blue-600 text-white border-blue-600'
+                : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+            }`}
+          >
+            Flirty
+          </button>
+          <button
+            type="button"
+            onClick={() => onDesperationLevelChange({ target: { value: 'guilt-trippy' } })}
+            className={`flex-1 py-2 px-4 rounded-md border transition-colors ${
+              desperationLevel === 'guilt-trippy'
+                ? 'bg-blue-600 text-white border-blue-600'
+                : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+            }`}
+          >
+            Guilt Trippy
+          </button>
+          <button
+            type="button"
+            onClick={() => onDesperationLevelChange({ target: { value: 'jealous' } })}
+            className={`flex-1 py-2 px-4 rounded-md border transition-colors ${
+              desperationLevel === 'jealous'
+                ? 'bg-blue-600 text-white border-blue-600'
+                : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+            }`}
+          >
+            Jealous
+          </button>
         </div>
       </div>
 
