@@ -2,6 +2,8 @@
 
 A fun web application that helps you craft the perfect message to convince your friends to join your gaming sessions. Using OpenAI's GPT-4o-mini, it generates messages in various hilarious styles and tones.
 
+Try it out: https://hop-on-bro.vercel.app/
+
 ## Features
 
 - 🤖 AI-powered message generation using OpenAI's GPT-4o-mini
