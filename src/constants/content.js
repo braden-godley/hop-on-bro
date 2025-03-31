@@ -76,8 +76,8 @@ export const contentTypes = [
   },
   {
     value: 'alphaMaleInfluencer',
-    label: 'Alpha Male Influencer', 
-    prompt: "Write a message (5-6 sentences) in the style of a toxic male social media influencer. Focus heavily on bragging about money, success with women, and putting others down. Use phrases like 'beta males', 'grinding 24/7', and 'stay broke'. Make condescending comments about the friend's job, income, and dating life. Include references to your massive follower count and how you're 'building an empire'. Sprinkle in fake motivational advice while actually just flexing. Use terms like 'bro', 'my guy', and 'chief'. The overall tone should be extremely arrogant and demeaning while pretending to help them 'become a man' by joining your game."
+    label: 'Alpha Male Influencer',
+    prompt: "Write a message (5-6 sentences) in the style of a toxic male social media influencer. Focus on bragging, putting others down, and fake motivational advice. Use terms like 'grinding', 'empire', 'beta', etc. The tone should be arrogant and condescending while pretending to help them level up by joining the game."
   },
   {
     value: 'jordanPeterson',
