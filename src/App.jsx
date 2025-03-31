@@ -3,8 +3,14 @@ import OpenAI from 'openai'
 import Settings from './components/Settings'
 import MessageForm from './components/MessageForm'
 import GeneratedMessage from './components/GeneratedMessage'
-import { contentTypes, loadingMessages } from './constants/content'
+import { contentTypes, loadingMessages, tones } from './constants/content'
 import { generatePrompt } from './utils/promptUtils'
+
+// Create UI-friendly tones array
+const toneOptions = Object.entries(tones).map(([value, { label }]) => ({
+  value,
+  label
+}))
 
 function App() {
   const [userName, setUserName] = useState('')
@@ -150,6 +156,7 @@ function App() {
         onContentTypeChange={(e) => setContentType(e.target.value)}
         onDesperationLevelChange={(e) => setDesperationLevel(e.target.value)}
         onSubmit={handleSubmit}
+        toneOptions={toneOptions}
       />
 
       {isLoading && (

@@ -1,3 +1,5 @@
+import { tones } from '../constants/content'
+
 export const getPromptForStyle = (style) => {
   const prompts = {
     casual: "Write a casual, friendly message (2-3 sentences) to convince someone to join a game. Keep it light and fun.",
@@ -20,19 +22,13 @@ export const getPromptForStyle = (style) => {
 }
 
 export const generatePrompt = (userName, friendName, gameName, toneType, contentType, contentTypeName) => {
-  const tones = {
-    'flirty': 'Generate a flirty, playful message that subtly hints at attraction while staying tasteful.',
-    'guilt-trippy': 'Generate a message that uses guilt trips and emotional manipulation to convince them to join.',
-    'jealous': 'Generate a message that subtly expresses jealousy and frustration about them hanging out with other people instead of joining your game.'
-  }
-
   return `
     Your name: ${userName}
     Friend's name: ${friendName}
     Game: ${gameName}
     Message Style: ${toneType}
     
-    ${tones[toneType] || tones['flirty']}
+    ${tones[toneType].prompt}
     Don't use emojis. 
     Don't add a title to the message unless it's essential for the format, such as a scientific paper.
     Use markdown formatting to enhance the message's presentation.

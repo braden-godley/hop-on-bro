@@ -25,4 +25,23 @@ export const loadingMessages = [
   "Making it extra convincing...",
   "Sprinkling some magic...",
   "Putting on the finishing touches..."
-] 
+]
+
+export const tones = {
+  'flirty': {
+    prompt: 'Generate a flirty, playful message that subtly hints at attraction while staying tasteful.',
+    label: 'Flirty'
+  },
+  'guilt-trippy': {
+    prompt: 'Generate a message that uses guilt trips and emotional manipulation to convince them to join.',
+    label: 'Guilt Trippy'
+  },
+  'jealous': {
+    prompt: 'Generate a message that subtly expresses jealousy and frustration about them hanging out with other people instead of joining your game.',
+    label: 'Jealous'
+  },
+  'gaslighting': {
+    prompt: 'Generate a message that playfully questions their memory and perception, suggesting they actually promised to join the game but must have forgotten. Use subtle misdirection and "are you sure?" moments while keeping it light and humorous.',
+    label: 'Gaslighting'
+  }
+} 

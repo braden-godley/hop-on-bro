@@ -11,7 +11,8 @@ const MessageForm = ({
   onInputChange,
   onContentTypeChange,
   onDesperationLevelChange,
-  onSubmit
+  onSubmit,
+  toneOptions
 }) => {
   return (
     <form onSubmit={onSubmit} className="space-y-6">
@@ -76,39 +77,20 @@ const MessageForm = ({
           Tone
         </label>
         <div className="flex gap-2">
-          <button
-            type="button"
-            onClick={() => onDesperationLevelChange({ target: { value: 'flirty' } })}
-            className={`flex-1 py-2 px-4 rounded-md border transition-colors ${
-              desperationLevel === 'flirty'
-                ? 'bg-blue-600 text-white border-blue-600'
-                : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
-            }`}
-          >
-            Flirty
-          </button>
-          <button
-            type="button"
-            onClick={() => onDesperationLevelChange({ target: { value: 'guilt-trippy' } })}
-            className={`flex-1 py-2 px-4 rounded-md border transition-colors ${
-              desperationLevel === 'guilt-trippy'
-                ? 'bg-blue-600 text-white border-blue-600'
-                : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
-            }`}
-          >
-            Guilt Trippy
-          </button>
-          <button
-            type="button"
-            onClick={() => onDesperationLevelChange({ target: { value: 'jealous' } })}
-            className={`flex-1 py-2 px-4 rounded-md border transition-colors ${
-              desperationLevel === 'jealous'
-                ? 'bg-blue-600 text-white border-blue-600'
-                : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
-            }`}
-          >
-            Jealous
-          </button>
+          {toneOptions.map((tone) => (
+            <button
+              key={tone.value}
+              type="button"
+              onClick={() => onDesperationLevelChange({ target: { value: tone.value } })}
+              className={`flex-1 py-2 px-4 rounded-md border transition-colors ${
+                desperationLevel === tone.value
+                  ? 'bg-blue-600 text-white border-blue-600'
+                  : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+              }`}
+            >
+              {tone.label}
+            </button>
+          ))}
         </div>
       </div>
 
