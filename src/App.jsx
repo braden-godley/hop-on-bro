@@ -176,6 +176,10 @@ function App() {
         onCopy={copyToClipboard}
         copySuccess={copySuccess}
       />
+      
+      <div className="mt-8 text-center text-gray-500 text-sm">
+        Created by Braden Godley
+      </div>
     </div>
   )
 }
