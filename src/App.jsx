@@ -174,7 +174,7 @@ function App() {
       />
       
       <div className="mt-8 text-center text-gray-500 text-sm">
-        Created by Braden Godley
+        Created by Braden Godley • <a href="https://github.com/braden-godley/hop-on-bro" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-600">GitHub</a>
       </div>
     </div>
   )
