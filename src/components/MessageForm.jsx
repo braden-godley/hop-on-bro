@@ -76,13 +76,13 @@ const MessageForm = ({
         <label htmlFor="desperationLevel" className="block text-sm font-medium text-gray-700 mb-2">
           Tone
         </label>
-        <div className="flex gap-2">
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
           {toneOptions.map((tone) => (
             <button
               key={tone.value}
               type="button"
               onClick={() => onDesperationLevelChange({ target: { value: tone.value } })}
-              className={`flex-1 py-2 px-4 rounded-md border transition-colors ${
+              className={`py-2 px-4 rounded-md border transition-colors ${
                 desperationLevel === tone.value
                   ? 'bg-blue-600 text-white border-blue-600'
                   : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
