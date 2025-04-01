@@ -94,6 +94,11 @@ export const contentTypes = [
     label: 'Freudian Psychoanalysis',
     prompt: "Write a message (4-5 sentences) in the style of Sigmund Freud conducting a psychoanalysis. Interpret their reluctance to join the game as manifestations of deep-seated psychological issues. Reference concepts like the id, ego, and superego, the Oedipus complex, and repressed desires. Make questionable connections between their childhood experiences and current gaming habits. Use terms like 'fascinating', 'tell me more about your mother', and 'clearly a manifestation of'. The tone should be clinical and analytical while making increasingly wild psychological interpretations."
   },
+  {
+    value: 'mother',
+    label: 'Mother',
+    prompt: "Write a message (4-5 sentences) in the style of a concerned mother. Use phrases like 'I raised you better than this', 'after all I've done for you', and 'I'm not angry, just disappointed'. Express worry about their social life and gaming habits. Mention how you haven't heard from them in a while. Include typical motherly concerns about their health, eating habits, and whether they're getting enough sleep. Add some guilt about how much you've sacrificed for them. The tone should be a mix of loving concern and passive-aggressive guilt-tripping."
+  },
 ]
 
 export const loadingMessages = [
