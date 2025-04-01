@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { GoogleGenerativeAI } from '@google/generative-ai'
 import OpenAI from 'openai'
 import Settings from './components/Settings'
 import MessageForm from './components/MessageForm'
@@ -23,11 +24,15 @@ function App() {
   const [desperationLevel, setDesperationLevel] = useState('flirty')
   const [copySuccess, setCopySuccess] = useState(false)
   const [apiKey, setApiKey] = useState('')
+  const [aiProvider, setAiProvider] = useState('gemini')
   const [showSettings, setShowSettings] = useState(false)
 
   useEffect(() => {
-    // Load API key from localStorage on component mount
-    const storedKey = localStorage.getItem('openaiApiKey')
+    // Load settings from localStorage on component mount
+    const storedProvider = localStorage.getItem('aiProvider') || 'gemini'
+    const storedKey = localStorage.getItem(`${storedProvider}ApiKey`)
+    
+    setAiProvider(storedProvider)
     if (storedKey) {
       setApiKey(storedKey)
     } else {
@@ -47,7 +52,16 @@ function App() {
   const handleApiKeyChange = (e) => {
     const newKey = e.target.value
     setApiKey(newKey)
-    localStorage.setItem('openaiApiKey', newKey)
+    localStorage.setItem(`${aiProvider}ApiKey`, newKey)
+  }
+
+  const handleAiProviderChange = (e) => {
+    const newProvider = e.target.value
+    setAiProvider(newProvider)
+    localStorage.setItem('aiProvider', newProvider)
+    // Load the API key for the new provider
+    const storedKey = localStorage.getItem(`${newProvider}ApiKey`)
+    setApiKey(storedKey || '')
   }
 
   const handleInputChange = (e, field) => {
@@ -76,35 +90,44 @@ function App() {
     setError('')
     
     if (!apiKey) {
-      setError('Please enter your OpenAI API key in settings')
+      setError(`Please enter your ${aiProvider === 'gemini' ? 'Google' : 'OpenAI'} API key in settings`)
       setIsLoading(false)
       return
     }
     
     try {
-      const openai = new OpenAI({
-        apiKey: apiKey,
-        dangerouslyAllowBrowser: true,
-      })
-
       const contentTypeName = contentTypes.find(type => type.value === contentType)?.label || 'casual'
       const prompt = generatePrompt(userName, friendName, gameName, desperationLevel, contentType, contentTypeName)
 
       console.log(prompt)
 
-      const completion = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
-        messages: [
-          {
-            role: "user",
-            content: prompt
-          }
-        ],
-        temperature: 0.8,
-        max_tokens: 1000
-      })
+      let response
+      if (aiProvider === 'gemini') {
+        const genAI = new GoogleGenerativeAI(apiKey)
+        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" })
+        const result = await model.generateContent(prompt)
+        const geminiResponse = await result.response
+        response = geminiResponse.text()
+      } else {
+        const openai = new OpenAI({
+          apiKey: apiKey,
+          dangerouslyAllowBrowser: true,
+        })
+        const completion = await openai.chat.completions.create({
+          model: "gpt-4o-mini",
+          messages: [
+            {
+              role: "user",
+              content: prompt
+            }
+          ],
+          temperature: 0.8,
+          max_tokens: 1000
+        })
+        response = completion.choices[0].message.content
+      }
 
-      setGeneratedMessage(completion.choices[0].message.content)
+      setGeneratedMessage(response)
     } catch (err) {
       setError('Failed to generate message. Please check your API key and try again.')
       console.error('Error:', err)
@@ -136,7 +159,12 @@ function App() {
       </div>
 
       {showSettings && (
-        <Settings apiKey={apiKey} onApiKeyChange={handleApiKeyChange} />
+        <Settings 
+          apiKey={apiKey} 
+          onApiKeyChange={handleApiKeyChange}
+          aiProvider={aiProvider}
+          onAiProviderChange={handleAiProviderChange}
+        />
       )}
 
       <p className="text-lg text-gray-600 text-center mb-8">Guilt trip your friends into joining your game!</p>

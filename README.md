@@ -1,12 +1,12 @@
 # Hop On, Bro
 
-A fun web application that helps you craft the perfect message to convince your friends to join your gaming sessions. Using OpenAI's GPT-4o-mini, it generates messages in various hilarious styles and tones.
+A fun web application that helps you craft the perfect message to convince your friends to join your gaming sessions. Using either Google's Gemini AI or OpenAI's GPT-4o-mini, it generates messages in various hilarious styles and tones.
 
 Try it out: https://hop-on-bro.vercel.app/
 
 ## Features
 
-- 🤖 AI-powered message generation using OpenAI's GPT-4o-mini
+- 🤖 AI-powered message generation using either Google's Gemini 2.0 Flash AI or OpenAI's GPT-4o-mini
 - 🎮 Customizable for any game or activity
 - 🎯 Multiple message styles and tones
 - 💾 Saves your preferences and API key locally
@@ -34,13 +34,23 @@ npm run dev
 
 ## Configuration
 
-You'll need an OpenAI API key to use the application. You can get one by:
-1. Going to [OpenAI's website](https://openai.com/)
-2. Creating an account or signing in
-3. Navigating to the API section
-4. Creating a new API key
+You'll need an API key from either Google AI or OpenAI to use the application. You can get one by:
 
-Once you have your API key, enter it in the Settings panel of the application. The key will be saved locally in your browser.
+### For Google Gemini:
+1. Going to [Google AI Studio](https://makersuite.google.com/app/apikey)
+2. Creating an account or signing in
+3. Creating a new API key
+
+### For OpenAI:
+1. Going to [OpenAI Platform](https://platform.openai.com/api-keys)
+2. Creating an account or signing in
+3. Creating a new API key
+
+Once you have your API key:
+1. Open the Settings panel in the application
+2. Select your preferred AI provider (Google Gemini or OpenAI)
+3. Enter your API key
+4. The key will be saved locally in your browser
 
 ## Usage
 
