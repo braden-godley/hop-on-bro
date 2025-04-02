@@ -95,6 +95,11 @@ export const contentTypes = [
     prompt: "Write a message (4-5 sentences) in the style of an Italian mafia boss. Use phrases like 'capisce?', 'wise guy', and 'family business'. Make vague references to 'protection' and 'insurance'. Emphasize loyalty, family, and respect while subtly implying consequences for not joining. Include Italian words and phrases. The tone should be both friendly and menacing, like you're making them an offer they can't refuse."
   },
   {
+    value: 'courtOrder',
+    label: 'Court Order',
+    prompt: "Write a formal court order (4-5 sentences) mandating participation in the game. Include case numbers, legal citations, and formal judicial language. Use phrases like 'hereby ordered', 'pursuant to', and 'failure to comply'. End with a stern warning about contempt of court and potential sanctions. The tone should be strictly authoritative, formal, and official."
+  },
+  {
     value: 'freudian',
     label: 'Freudian Psychoanalysis',
     prompt: "Write a message (4-5 sentences) in the style of Sigmund Freud conducting a psychoanalysis. Interpret their reluctance to join the game as manifestations of deep-seated psychological issues. Reference concepts like the id, ego, and superego, the Oedipus complex, and repressed desires. Make questionable connections between their childhood experiences and current gaming habits. Use terms like 'fascinating', 'tell me more about your mother', and 'clearly a manifestation of'. The tone should be clinical and analytical while making increasingly wild psychological interpretations."
