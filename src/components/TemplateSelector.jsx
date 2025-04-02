@@ -6,7 +6,29 @@ const TemplateSelector = ({ isOpen, onClose, onSelect, selectedValue }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg p-6 w-[90vw] max-w-4xl max-h-[90vh] overflow-y-auto">
+      <div 
+        className="bg-white rounded-lg p-6 w-[90vw] max-w-4xl max-h-[90vh] overflow-y-auto" 
+        style={{
+          scrollbarWidth: 'thin',
+          scrollbarColor: '#E5E7EB transparent',
+          marginRight: '2px',
+        }}
+      >
+        <style>
+          {`
+            .bg-white::-webkit-scrollbar {
+              width: 6px;
+              margin-right: 2px;
+            }
+            .bg-white::-webkit-scrollbar-track {
+              background: transparent;
+            }
+            .bg-white::-webkit-scrollbar-thumb {
+              background-color: #E5E7EB;
+              border-radius: 20px;
+            }
+          `}
+        </style>
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-semibold">Choose Template</h2>
           <button
