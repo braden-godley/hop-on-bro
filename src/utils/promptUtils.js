@@ -26,7 +26,7 @@ Generate a message that:
 - ${contentType !== 'annoyingEmojis' ? 'Do not use any emojis' : 'Use excessive emojis'}
 - Only include a title if essential for the format (e.g. scientific paper)
 - Follow the structure and conventions of a ${contentTypeName}
-- Don't use placeholders like [Your Name] or [Friend's Name]
+- Don't use placeholders like [Your Name], [Friend's Name], [Game Name], or anything else that requires the user to fill in the message.
 </formatting>
 
 <content_style>
@@ -44,11 +44,9 @@ ${tone.prompt}
 </context>
 
 <constraints>
-- Keep the message appropriate and non-harmful
-- Maintain the specified tone without being offensive
 - Stay within the expected length for the content type
 - Ensure the message is clear and understandable
-- Avoid any discriminatory or inappropriate content
+- Make sure you capture the essence of the tone
 </constraints>
 
 <output_format>

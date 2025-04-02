@@ -2,7 +2,7 @@ export const contentTypes = [
   { 
     value: 'casual', 
     label: 'Casual Message',
-    prompt: "Write a casual, friendly message (2-3 sentences) to convince someone to join a game. Keep it light and fun."
+    prompt: "Write a casual, friendly message (3-4 sentences) to convince someone to join a game."
   },
   { 
     value: 'scientific', 
@@ -65,11 +65,6 @@ export const contentTypes = [
     prompt: "Write a weather forecast-style message (3-4 sentences) to convince someone to join a game. Use meteorological terms, forecast predictions, and weather presenter enthusiasm."
   },
   {
-    value: 'techSupport',
-    label: 'Tech Support Ticket',
-    prompt: "Write a tech support ticket-style message (150-200 words) to convince someone to join a game. Include ticket number, problem description, troubleshooting steps, and resolution. Use IT terminology and customer service language."
-  },
-  {
     value: 'annoyingEmojis',
     label: 'Annoying Emojis',
     prompt: "Write a message with annoying emojis (3-4 sentences) to convince someone to join a game. Spam tons of emojis. Way too many emojis. Like at least 5 emojies per word."
@@ -113,6 +108,11 @@ export const contentTypes = [
     value: 'nigerianPrince',
     label: 'Nigerian Prince Scam',
     prompt: "Write a message (4-5 sentences) in the style of a Nigerian prince scam email. Begin by introducing yourself as a Nigerian prince or government official. Use formal yet slightly awkward English with occasional grammatical errors. Include mentions of large sums of money in Nigerian Naira or US dollars, urgent business proposals, and requests for assistance. Reference your position in Nigeria and current predicament preventing access to funds. End with a plea for partnership and vague promises of substantial rewards. Keep the tone professional but with telltale signs of the classic format."
+  },
+  {
+    value: 'hrComplaint',
+    label: 'HR Complaint',
+    prompt: "Write a formal HR complaint (4-5 sentences) about someone not joining the game. Include typical HR formatting with date, subject line, and incident details. Reference workplace policies, team morale impact, and previous verbal warnings. Request an immediate investigation and corrective action. Use corporate HR jargon like 'hostile work environment', 'employee engagement', and 'workplace culture'. The tone should be passive-aggressive and overly formal while treating gaming as a serious workplace obligation."
   }
 ]
 
@@ -131,7 +131,7 @@ export const tones = [
   {
     value: 'flirty',
     label: 'Flirty',
-    prompt: 'Generate a flirty, playful message that subtly hints at attraction while staying tasteful.'
+    prompt: 'Generate a flirty, playful message that not-so-subtly hints at attraction while staying tasteful.'
   },
   {
     value: 'guilt-trippy',
@@ -141,17 +141,17 @@ export const tones = [
   {
     value: 'jealous',
     label: 'Jealous',
-    prompt: 'Generate a message that subtly expresses jealousy and frustration about them hanging out with other people instead of joining your game.'
+    prompt: 'Generate a message that expresses great jealousy and frustration about them hanging out with other people instead of joining your game.'
   },
   {
     value: 'gaslighting',
     label: 'Gaslighting',
-    prompt: 'Generate a message that playfully questions their memory and perception, suggesting they actually promised to join the game but must have forgotten. Use subtle misdirection and "are you sure?" moments while keeping it light and humorous.'
+    prompt: 'Generate a message that manipulatively questions their memory and perception, suggesting they actually promised to join the game but must have forgotten. Use misdirection and "are you sure?" moments while being very pushy and insistent.'
   },
   {
     value: 'blackmailing',
     label: 'Blackmailing',
-    prompt: 'Generate a message that makes vague, playful threats about revealing unspecified secrets or information. Keep all threats completely non-specific, like "it would be a shame if certain things came to light". Never mention any actual secrets or details.'
+    prompt: 'Generate a message that makes vague threats about revealing unspecified secrets or information. Keep all threats completely non-specific, like "it would be a shame if certain things came to light" or "you wouldn\'t want this getting out". Never mention any actual secrets or details.'
   },
   {
     value: 'cocky',
