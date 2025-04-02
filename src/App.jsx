@@ -1,11 +1,9 @@
 import { useReducer, useEffect } from 'react'
-import { GoogleGenerativeAI } from '@google/generative-ai'
-import OpenAI from 'openai'
 import Settings from './components/Settings'
 import MessageForm from './components/MessageForm'
 import GeneratedMessage from './components/GeneratedMessage'
 import { templates, loadingMessages, tones } from './constants/content'
-import { generatePrompt } from './utils/promptUtils'
+import { useMessageGenerator } from './hooks/useMessageGenerator'
 
 // Create UI-friendly tones array
 const toneOptions = tones.map(tone => ({
@@ -26,12 +24,9 @@ const initialState = {
     aiProvider: 'gemini'
   },
   ui: {
-    isLoading: false,
-    error: '',
-    copySuccess: false,
-    showSettings: false
-  },
-  generatedMessage: ''
+    showSettings: false,
+    copySuccess: false
+  }
 }
 
 function reducer(state, action) {
@@ -60,11 +55,6 @@ function reducer(state, action) {
           [action.field]: action.value
         }
       }
-    case 'SET_GENERATED_MESSAGE':
-      return {
-        ...state,
-        generatedMessage: action.value
-      }
     case 'LOAD_SAVED_STATE':
       return {
         ...state,
@@ -77,7 +67,12 @@ function reducer(state, action) {
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
-  const { form, api, ui, generatedMessage } = state
+  const { form, api, ui } = state
+  
+  const { loading, error, message, generate } = useMessageGenerator({
+    provider: api.aiProvider,
+    apiKey: api.apiKey
+  });
 
   useEffect(() => {
     // Load settings from localStorage on component mount
@@ -130,62 +125,12 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    dispatch({ type: 'SET_UI_STATE', field: 'isLoading', value: true })
-    dispatch({ type: 'SET_UI_STATE', field: 'error', value: '' })
-    
-    if (!api.apiKey) {
-      dispatch({ 
-        type: 'SET_UI_STATE',
-        field: 'error',
-        value: `Please enter your ${api.aiProvider === 'gemini' ? 'Google' : 'OpenAI'} API key in settings`
-      })
-      dispatch({ type: 'SET_UI_STATE', field: 'isLoading', value: false })
-      return
-    }
-    
-    try {
-      const contentTypeName = templates.find(type => type.value === form.contentType)?.label || 'casual'
-      const prompt = generatePrompt(form.userName, form.friendName, form.gameName, form.tone, form.contentType, contentTypeName)
-
-      console.log(prompt)
-
-      let response
-      if (api.aiProvider === 'gemini') {
-        const genAI = new GoogleGenerativeAI(api.apiKey)
-        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" })
-        const result = await model.generateContent(prompt)
-        const geminiResponse = await result.response
-        response = geminiResponse.text()
-      } else {
-        const openai = new OpenAI({
-          apiKey: api.apiKey,
-          dangerouslyAllowBrowser: true,
-        })
-        const completion = await openai.chat.completions.create({
-          model: "gpt-4o-mini",
-          messages: [{ role: "user", content: prompt }],
-          temperature: 0.8,
-          max_tokens: 1000
-        })
-        response = completion.choices[0].message.content
-      }
-
-      dispatch({ type: 'SET_GENERATED_MESSAGE', value: response })
-    } catch (err) {
-      dispatch({ 
-        type: 'SET_UI_STATE',
-        field: 'error',
-        value: 'Failed to generate message. Please check your API key and try again.'
-      })
-      console.error('Error:', err)
-    } finally {
-      dispatch({ type: 'SET_UI_STATE', field: 'isLoading', value: false })
-    }
+    await generate(form)
   }
 
   const copyToClipboard = async () => {
     try {
-      await navigator.clipboard.writeText(generatedMessage)
+      await navigator.clipboard.writeText(message)
       dispatch({ type: 'SET_UI_STATE', field: 'copySuccess', value: true })
       setTimeout(() => {
         dispatch({ type: 'SET_UI_STATE', field: 'copySuccess', value: false })
@@ -228,7 +173,7 @@ function App() {
         gameName={form.gameName}
         contentType={form.contentType}
         tone={form.tone}
-        isLoading={ui.isLoading}
+        isLoading={loading}
         onInputChange={handleInputChange}
         onContentTypeChange={(e) => dispatch({ 
           type: 'SET_FORM_FIELD',
@@ -244,20 +189,20 @@ function App() {
         toneOptions={toneOptions}
       />
 
-      {ui.isLoading && (
+      {loading && (
         <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-md text-blue-700 text-center">
           {loadingMessages[Math.floor(Math.random() * loadingMessages.length)]}
         </div>
       )}
 
-      {ui.error && (
+      {error && (
         <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-md text-red-700">
-          {ui.error}
+          {error}
         </div>
       )}
 
       <GeneratedMessage
-        message={generatedMessage}
+        message={message}
         onCopy={copyToClipboard}
         copySuccess={ui.copySuccess}
       />
