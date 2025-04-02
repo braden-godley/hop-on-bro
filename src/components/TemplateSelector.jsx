@@ -1,7 +1,7 @@
 import React from 'react'
 import { templates } from '../constants/content'
 
-const StyleSelector = ({ isOpen, onClose, onSelect, selectedValue }) => {
+const TemplateSelector = ({ isOpen, onClose, onSelect, selectedValue }) => {
   if (!isOpen) return null
 
   return (
@@ -45,4 +45,4 @@ const StyleSelector = ({ isOpen, onClose, onSelect, selectedValue }) => {
   )
 }
 
-export default StyleSelector 
+export default TemplateSelector 

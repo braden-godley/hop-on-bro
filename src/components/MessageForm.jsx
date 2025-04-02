@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { templates } from '../constants/content'
-import StyleSelector from './StyleSelector'
+import TemplateSelector from './TemplateSelector'
 
 const MessageForm = ({
   userName,
@@ -15,10 +15,10 @@ const MessageForm = ({
   onSubmit,
   toneOptions
 }) => {
-  const [isStyleSelectorOpen, setIsStyleSelectorOpen] = useState(false)
-  const selectedStyle = templates.find(type => type.value === contentType)
+  const [isTemplateSelectOpen, setIsTemplateSelectOpen] = useState(false)
+  const selectedTemplate = templates.find(type => type.value === contentType)
 
-  const handleStyleSelect = (value) => {
+  const handleTemplateSelect = (value) => {
     onContentTypeChange({ target: { value } })
   }
 
@@ -67,20 +67,20 @@ const MessageForm = ({
         <label className="block text-sm font-medium text-gray-700 mb-2">Template</label>
         <button
           type="button"
-          onClick={() => setIsStyleSelectorOpen(true)}
+          onClick={() => setIsTemplateSelectOpen(true)}
           className="w-full px-4 py-2 border border-gray-300 rounded-md text-left focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:bg-gray-50"
         >
-          <span className="font-medium">{selectedStyle?.label || 'Choose a template'}</span>
+          <span className="font-medium">{selectedTemplate?.label || 'Choose a template'}</span>
           <p className="text-sm text-gray-500 truncate mt-1">
-            {selectedStyle?.summary || 'Click to select a template'}
+            {selectedTemplate?.summary || 'Click to select a template'}
           </p>
         </button>
       </div>
 
-      <StyleSelector
-        isOpen={isStyleSelectorOpen}
-        onClose={() => setIsStyleSelectorOpen(false)}
-        onSelect={handleStyleSelect}
+      <TemplateSelector
+        isOpen={isTemplateSelectOpen}
+        onClose={() => setIsTemplateSelectOpen(false)}
+        onSelect={handleTemplateSelect}
         selectedValue={contentType}
       />
 
