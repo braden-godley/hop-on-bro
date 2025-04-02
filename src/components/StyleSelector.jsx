@@ -35,7 +35,7 @@ const StyleSelector = ({ isOpen, onClose, onSelect, selectedValue }) => {
             >
               <h3 className="font-semibold text-lg mb-2">{type.label}</h3>
               <p className="text-sm text-gray-600 line-clamp-3">
-                {type.prompt.split('.')[0]}.
+                {type.summary}
               </p>
             </button>
           ))}

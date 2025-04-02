@@ -72,7 +72,7 @@ const MessageForm = ({
         >
           <span className="font-medium">{selectedStyle?.label || 'Choose a style'}</span>
           <p className="text-sm text-gray-500 truncate mt-1">
-            {selectedStyle?.prompt.split('.')[0]}.
+            {selectedStyle?.summary || 'Click to select a message style'}
           </p>
         </button>
       </div>
