@@ -138,13 +138,13 @@ export const templates = [
     value: 'freudian',
     label: '🛋️ Freudian Psychoanalysis',
     summary: 'A psychological analysis linking gaming avoidance to childhood trauma.',
-    prompt: "Write a message (4-5 sentences) in the style of Sigmund Freud conducting a psychoanalysis. Interpret their reluctance to join the game as manifestations of deep-seated psychological issues. Reference concepts like the id, ego, and superego, the Oedipus complex, and repressed desires. Make questionable connections between their childhood experiences and current gaming habits. Use terms like 'fascinating', 'tell me more about your mother', and 'clearly a manifestation of'. The tone should be clinical and analytical while making increasingly wild psychological interpretations. Suggest that not joining will lead to severe psychological regression."
+    prompt: "Write a message (5-6 sentences) in the style of Sigmund Freud conducting a psychoanalysis. Interpret their reluctance to join the game as manifestations of deep-seated psychological issues. Reference concepts like the id, ego, and superego, the Oedipus complex, and repressed desires. Make questionable connections between their childhood experiences and current gaming habits. Use terms like 'fascinating', 'tell me more about your mother', and 'clearly a manifestation of'. The tone should be clinical and analytical while making increasingly wild psychological interpretations. Suggest that not joining will lead to severe psychological regression."
   },
   {
     value: 'mother',
     label: '👩 Mother',
     summary: 'A guilt-inducing message from your concerned gaming mother.',
-    prompt: "Write a message (4-5 sentences) in the style of a concerned mother. Use phrases like 'I raised you better than this', 'after all I've done for you', and 'I'm not angry, just disappointed'. Express worry about their social life and gaming habits. Mention how you haven't heard from them in a while. Include typical motherly concerns about their health, eating habits, and whether they're getting enough sleep. Add some guilt about how much you've sacrificed for them. The tone should be a mix of loving concern and passive-aggressive guilt-tripping. Imply that their refusal to join is breaking their mother's heart."
+    prompt: "Write a message (5-6 sentences) in the style of a concerned mother. Use phrases like 'I raised you better than this', 'after all I've done for you', and 'I'm not angry, just disappointed'. Express worry about their social life and gaming habits. Mention how you haven't heard from them in a while. Include typical motherly concerns about their health, eating habits, and whether they're getting enough sleep. Add some guilt about how much you've sacrificed for them. The tone should be a mix of loving concern and passive-aggressive guilt-tripping. Imply that their refusal to join is breaking their mother's heart."
   },
   {
     value: 'nigerianPrince',
@@ -190,8 +190,8 @@ export const tones = [
     prompt: 'Generate a flirty, playful message that not-so-subtly hints at attraction while staying tasteful.'
   },
   {
-    value: 'guilt-trippy',
-    label: '😢 Guilt Trippy',
+    value: 'guilt-trip',
+    label: '😢 Guilt Trip',
     prompt: 'Generate a message that uses guilt trips and emotional manipulation to convince them to join.'
   },
   {
@@ -200,14 +200,14 @@ export const tones = [
     prompt: 'Generate a message that expresses great jealousy and frustration about them hanging out with other people instead of joining your game.'
   },
   {
-    value: 'gaslighting',
-    label: '🔥 Gaslighting',
+    value: 'gaslight',
+    label: '🔥 Gaslight',
     prompt: 'Generate a message that manipulatively questions their memory and perception, suggesting they actually promised to join the game but must have forgotten. Use misdirection and "are you sure?" moments while being very pushy and insistent.'
   },
   {
-    value: 'blackmailing',
-    label: '🤫 Blackmailing',
-    prompt: 'Generate a message that makes vague threats about revealing unspecified secrets or information. Keep all threats completely non-specific, like "it would be a shame if certain things came to light" or "you wouldn\'t want this getting out". Never mention any actual secrets or details.'
+    value: 'blackmail',
+    label: '🤫 Blackmail',
+    prompt: 'Generate a message that makes vague threats about revealing unspecified secrets or information. You must use the non-specific threat "it would be a shame if certain things came to light". Never mention any actual secrets or details.'
   },
   {
     value: 'cocky',
