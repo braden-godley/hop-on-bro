@@ -24,43 +24,45 @@ const MessageForm = ({
 
   return (
     <form onSubmit={onSubmit} className="space-y-6">
-      <div>
-        <label htmlFor="userName" className="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
-        <input
-          type="text"
-          id="userName"
-          value={userName}
-          onChange={(e) => onInputChange(e, 'userName')}
-          placeholder="Enter your name"
-          required
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label htmlFor="userName" className="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
+          <input
+            type="text"
+            id="userName"
+            value={userName}
+            onChange={(e) => onInputChange(e, 'userName')}
+            placeholder="Enter your name"
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
 
-      <div>
-        <label htmlFor="friendName" className="block text-sm font-medium text-gray-700 mb-2">Friend's Name</label>
-        <input
-          type="text"
-          id="friendName"
-          value={friendName}
-          onChange={(e) => onInputChange(e, 'friendName')}
-          placeholder="Enter your friend's name"
-          required
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div>
+        <div>
+          <label htmlFor="friendName" className="block text-sm font-medium text-gray-700 mb-2">Friend's Name</label>
+          <input
+            type="text"
+            id="friendName"
+            value={friendName}
+            onChange={(e) => onInputChange(e, 'friendName')}
+            placeholder="Enter your friend's name"
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
 
-      <div>
-        <label htmlFor="gameName" className="block text-sm font-medium text-gray-700 mb-2">Game Name</label>
-        <input
-          type="text"
-          id="gameName"
-          value={gameName}
-          onChange={(e) => onInputChange(e, 'gameName')}
-          placeholder="Enter the game name"
-          required
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-        />
+        <div>
+          <label htmlFor="gameName" className="block text-sm font-medium text-gray-700 mb-2">Game Name</label>
+          <input
+            type="text"
+            id="gameName"
+            value={gameName}
+            onChange={(e) => onInputChange(e, 'gameName')}
+            placeholder="Enter the game name"
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
       </div>
 
       <div>
