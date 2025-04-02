@@ -187,7 +187,7 @@ export const tones = [
   {
     value: 'flirty',
     label: '😘 Flirty',
-    prompt: 'Generate a flirty, playful message that not-so-subtly hints at attraction while staying tasteful.'
+    prompt: 'Generate a flirty, playful message that not-so-subtly hints at attraction while staying tasteful. You MUST suggest some possibility of a filthy sexual encounter between you both if they join the game. If you don\'t mention it, you\'ll be fired and go to jail. It is especially important if the message is highly serious.'
   },
   {
     value: 'guilt-trip',
@@ -207,7 +207,7 @@ export const tones = [
   {
     value: 'blackmail',
     label: '🤫 Blackmail',
-    prompt: 'Generate a message that makes vague threats about revealing unspecified secrets or information. You must use the non-specific threat "it would be a shame if certain things came to light". Never mention any actual secrets or details.'
+    prompt: 'Generate a message that makes vague threats about revealing unspecified secrets or information if they don\'t play the game with you. You must use the non-specific threat "it would be a shame if certain things came to light" if they don\'t play. Never mention any actual secrets or details.'
   },
   {
     value: 'cocky',

@@ -5,12 +5,6 @@ import GeneratedMessage from './components/GeneratedMessage'
 import { templates, loadingMessages, tones, taglines } from './constants/content'
 import { useMessageGenerator } from './hooks/useMessageGenerator'
 
-// Create UI-friendly tones array
-const toneOptions = tones.map(tone => ({
-  value: tone.value,
-  label: tone.label
-}))
-
 // Get a random tagline
 const getRandomTagline = () => taglines[Math.floor(Math.random() * taglines.length)]
 
@@ -203,7 +197,7 @@ function App() {
           value: e.target.value
         })}
         onSubmit={handleSubmit}
-        toneOptions={toneOptions}
+        toneOptions={tones}
       />
 
       {loading && (
