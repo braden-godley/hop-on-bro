@@ -21,7 +21,7 @@ function App() {
   const [generatedMessage, setGeneratedMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
-  const [desperationLevel, setDesperationLevel] = useState('flirty')
+  const [tone, setTone] = useState('flirty')
   const [copySuccess, setCopySuccess] = useState(false)
   const [apiKey, setApiKey] = useState('')
   const [aiProvider, setAiProvider] = useState('gemini')
@@ -97,7 +97,7 @@ function App() {
     
     try {
       const contentTypeName = templates.find(type => type.value === contentType)?.label || 'casual'
-      const prompt = generatePrompt(userName, friendName, gameName, desperationLevel, contentType, contentTypeName)
+      const prompt = generatePrompt(userName, friendName, gameName, tone, contentType, contentTypeName)
 
       console.log(prompt)
 
@@ -174,11 +174,11 @@ function App() {
         friendName={friendName}
         gameName={gameName}
         contentType={contentType}
-        desperationLevel={desperationLevel}
+        tone={tone}
         isLoading={isLoading}
         onInputChange={handleInputChange}
         onContentTypeChange={(e) => setContentType(e.target.value)}
-        onDesperationLevelChange={(e) => setDesperationLevel(e.target.value)}
+        onToneChange={(e) => setTone(e.target.value)}
         onSubmit={handleSubmit}
         toneOptions={toneOptions}
       />

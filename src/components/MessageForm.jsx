@@ -7,11 +7,11 @@ const MessageForm = ({
   friendName,
   gameName,
   contentType,
-  desperationLevel,
+  tone,
   isLoading,
   onInputChange,
   onContentTypeChange,
-  onDesperationLevelChange,
+  onToneChange,
   onSubmit,
   toneOptions
 }) => {
@@ -89,18 +89,18 @@ const MessageForm = ({
           Tone
         </label>
         <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
-          {toneOptions.map((tone) => (
+          {toneOptions.map((toneOption) => (
             <button
-              key={tone.value}
+              key={toneOption.value}
               type="button"
-              onClick={() => onDesperationLevelChange({ target: { value: tone.value } })}
+              onClick={() => onToneChange({ target: { value: toneOption.value } })}
               className={`py-2 px-4 rounded-md border transition-colors ${
-                desperationLevel === tone.value
+                tone === toneOption.value
                   ? 'bg-blue-600 text-white border-blue-600'
                   : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
               }`}
             >
-              {tone.label}
+              {toneOption.label}
             </button>
           ))}
         </div>
