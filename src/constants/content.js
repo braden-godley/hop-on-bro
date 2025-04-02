@@ -107,12 +107,17 @@ export const contentTypes = [
   {
     value: 'nigerianPrince',
     label: 'Nigerian Prince Scam',
-    prompt: "Write a message (4-5 sentences) in the style of a Nigerian prince scam email. Begin by introducing yourself as a Nigerian prince or government official. Use formal yet slightly awkward English with occasional grammatical errors. Include mentions of large sums of money in Nigerian Naira or US dollars, urgent business proposals, and requests for assistance. Reference your position in Nigeria and current predicament preventing access to funds. End with a plea for partnership and vague promises of substantial rewards. Keep the tone professional but with telltale signs of the classic format."
+    prompt: "Write a message (4-5 sentences) in the style of a Nigerian prince scam email. Begin by introducing yourself as a Nigerian prince or government official. Use formal yet slightly awkward and incorrect English with occasional grammatical errors. Include mentions of large sums of money in Nigerian Naira or US dollars, urgent business proposals, and requests for assistance. Reference your position in Nigeria and current predicament preventing access to funds. Say that if they play the game, they will get a cut of the money. Keep the tone professional but with telltale signs of the classic format."
   },
   {
     value: 'hrComplaint',
     label: 'HR Complaint',
     prompt: "Write a formal HR complaint (4-5 sentences) about someone not joining the game. Include typical HR formatting with date, subject line, and incident details. Reference workplace policies, team morale impact, and previous verbal warnings. Request an immediate investigation and corrective action. Use corporate HR jargon like 'hostile work environment', 'employee engagement', and 'workplace culture'. The tone should be passive-aggressive and overly formal while treating gaming as a serious workplace obligation."
+  },
+  {
+    value: 'stateSurveillance',
+    label: 'State Surveillance',
+    prompt: "Write a message (4-5 sentences) as a state surveillance director. Begin by noting their concerning absence from recent gaming activities. Mention how closely their file is being monitored by certain government agencies at this time. Make it clear that their next moves are being watched very carefully, and that one wrong decision would be... most unfortunate. End with a thinly-veiled suggestion that immediate participation in the game would help their status considerably. Make explicit mention of a government agency, like the CIA or NSA. Start message with a generic government email like 'lJEIanx9883uIpWz@protonmail.com'. The tone should be cold and methodical, like an internal memo about a person of particular interest."
   }
 ]
 
