@@ -2,7 +2,7 @@ import { useReducer, useEffect } from 'react'
 import Settings from './components/Settings'
 import MessageForm from './components/MessageForm'
 import GeneratedMessage from './components/GeneratedMessage'
-import { templates, loadingMessages, tones } from './constants/content'
+import { templates, loadingMessages, tones, taglines } from './constants/content'
 import { useMessageGenerator } from './hooks/useMessageGenerator'
 
 // Create UI-friendly tones array
@@ -10,6 +10,9 @@ const toneOptions = tones.map(tone => ({
   value: tone.value,
   label: tone.label
 }))
+
+// Get a random tagline
+const getRandomTagline = () => taglines[Math.floor(Math.random() * taglines.length)]
 
 const initialState = {
   form: {
@@ -165,7 +168,7 @@ function App() {
         />
       )}
 
-      <p className="text-lg text-gray-600 text-center mb-8">Guilt trip your friends into joining your game!</p>
+      <p className="text-lg text-gray-600 text-center mb-8">{getRandomTagline()}</p>
       
       <MessageForm
         userName={form.userName}

@@ -1,3 +1,22 @@
+export const taglines = [
+  'Where friendship meets psychological warfare (the fun kind!).',
+  'Your friends\' free will is merely a suggestion.',
+  'Convince, coerce, conquer.',
+  'Generating passive-aggression so you don\'t have to.',
+  'Because sometimes your friend needs a little "encouragement".',
+  'Turning \'maybe later\' into \'stop messaging me!\'',
+  'The art of the nudge, weaponized.',
+  'We put the \'con\' in convincing.',
+  'Stop asking nicely.',
+  'Diplomacy failed. Time for Plan B(ro).',
+  'Manufacturing consent, one message at a time.',
+  'Use our peer pressure algorithms today!',
+  'Resistance is futile.',
+  'Turning peer pressure into a high score.',
+  'Generate the perfect ethically questionable game invite.',
+  'Why beg when you can bamboozle them into battle?'
+]
+
 export const templates = [
   { 
     value: 'casual', 
