@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useReducer, useEffect } from 'react'
 import { GoogleGenerativeAI } from '@google/generative-ai'
 import OpenAI from 'openai'
 import Settings from './components/Settings'
@@ -13,134 +13,183 @@ const toneOptions = tones.map(tone => ({
   label: tone.label
 }))
 
+const initialState = {
+  form: {
+    userName: '',
+    friendName: '',
+    gameName: '',
+    contentType: 'casual',
+    tone: 'flirty'
+  },
+  api: {
+    apiKey: '',
+    aiProvider: 'gemini'
+  },
+  ui: {
+    isLoading: false,
+    error: '',
+    copySuccess: false,
+    showSettings: false
+  },
+  generatedMessage: ''
+}
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'SET_FORM_FIELD':
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          [action.field]: action.value
+        }
+      }
+    case 'SET_API_CONFIG':
+      return {
+        ...state,
+        api: {
+          ...state.api,
+          [action.field]: action.value
+        }
+      }
+    case 'SET_UI_STATE':
+      return {
+        ...state,
+        ui: {
+          ...state.ui,
+          [action.field]: action.value
+        }
+      }
+    case 'SET_GENERATED_MESSAGE':
+      return {
+        ...state,
+        generatedMessage: action.value
+      }
+    case 'LOAD_SAVED_STATE':
+      return {
+        ...state,
+        ...action.savedState
+      }
+    default:
+      return state
+  }
+}
+
 function App() {
-  const [userName, setUserName] = useState('')
-  const [friendName, setFriendName] = useState('')
-  const [gameName, setGameName] = useState('')
-  const [contentType, setContentType] = useState('casual')
-  const [generatedMessage, setGeneratedMessage] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState('')
-  const [tone, setTone] = useState('flirty')
-  const [copySuccess, setCopySuccess] = useState(false)
-  const [apiKey, setApiKey] = useState('')
-  const [aiProvider, setAiProvider] = useState('gemini')
-  const [showSettings, setShowSettings] = useState(false)
+  const [state, dispatch] = useReducer(reducer, initialState)
+  const { form, api, ui, generatedMessage } = state
 
   useEffect(() => {
     // Load settings from localStorage on component mount
     const storedProvider = localStorage.getItem('aiProvider') || 'gemini'
     const storedKey = localStorage.getItem(`${storedProvider}ApiKey`)
-    
-    setAiProvider(storedProvider)
-    if (storedKey) {
-      setApiKey(storedKey)
-    } else {
-      setShowSettings(true) // Show settings if no API key is found
-    }
-
-    // Load saved input values
     const savedUserName = localStorage.getItem('userName')
     const savedFriendName = localStorage.getItem('friendName')
     const savedGameName = localStorage.getItem('gameName')
     
-    if (savedUserName) setUserName(savedUserName)
-    if (savedFriendName) setFriendName(savedFriendName)
-    if (savedGameName) setGameName(savedGameName)
+    dispatch({
+      type: 'LOAD_SAVED_STATE',
+      savedState: {
+        api: {
+          aiProvider: storedProvider,
+          apiKey: storedKey || ''
+        },
+        form: {
+          ...form,
+          userName: savedUserName || '',
+          friendName: savedFriendName || '',
+          gameName: savedGameName || ''
+        },
+        ui: {
+          ...ui,
+          showSettings: !storedKey
+        }
+      }
+    })
   }, [])
 
   const handleApiKeyChange = (e) => {
     const newKey = e.target.value
-    setApiKey(newKey)
-    localStorage.setItem(`${aiProvider}ApiKey`, newKey)
+    dispatch({ type: 'SET_API_CONFIG', field: 'apiKey', value: newKey })
+    localStorage.setItem(`${api.aiProvider}ApiKey`, newKey)
   }
 
   const handleAiProviderChange = (e) => {
     const newProvider = e.target.value
-    setAiProvider(newProvider)
+    dispatch({ type: 'SET_API_CONFIG', field: 'aiProvider', value: newProvider })
     localStorage.setItem('aiProvider', newProvider)
-    // Load the API key for the new provider
     const storedKey = localStorage.getItem(`${newProvider}ApiKey`)
-    setApiKey(storedKey || '')
+    dispatch({ type: 'SET_API_CONFIG', field: 'apiKey', value: storedKey || '' })
   }
 
   const handleInputChange = (e, field) => {
     const value = e.target.value
-    switch (field) {
-      case 'userName':
-        setUserName(value)
-        localStorage.setItem('userName', value)
-        break
-      case 'friendName':
-        setFriendName(value)
-        localStorage.setItem('friendName', value)
-        break
-      case 'gameName':
-        setGameName(value)
-        localStorage.setItem('gameName', value)
-        break
-      default:
-        break
-    }
+    dispatch({ type: 'SET_FORM_FIELD', field, value })
+    localStorage.setItem(field, value)
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setIsLoading(true)
-    setError('')
+    dispatch({ type: 'SET_UI_STATE', field: 'isLoading', value: true })
+    dispatch({ type: 'SET_UI_STATE', field: 'error', value: '' })
     
-    if (!apiKey) {
-      setError(`Please enter your ${aiProvider === 'gemini' ? 'Google' : 'OpenAI'} API key in settings`)
-      setIsLoading(false)
+    if (!api.apiKey) {
+      dispatch({ 
+        type: 'SET_UI_STATE',
+        field: 'error',
+        value: `Please enter your ${api.aiProvider === 'gemini' ? 'Google' : 'OpenAI'} API key in settings`
+      })
+      dispatch({ type: 'SET_UI_STATE', field: 'isLoading', value: false })
       return
     }
     
     try {
-      const contentTypeName = templates.find(type => type.value === contentType)?.label || 'casual'
-      const prompt = generatePrompt(userName, friendName, gameName, tone, contentType, contentTypeName)
+      const contentTypeName = templates.find(type => type.value === form.contentType)?.label || 'casual'
+      const prompt = generatePrompt(form.userName, form.friendName, form.gameName, form.tone, form.contentType, contentTypeName)
 
       console.log(prompt)
 
       let response
-      if (aiProvider === 'gemini') {
-        const genAI = new GoogleGenerativeAI(apiKey)
+      if (api.aiProvider === 'gemini') {
+        const genAI = new GoogleGenerativeAI(api.apiKey)
         const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" })
         const result = await model.generateContent(prompt)
         const geminiResponse = await result.response
         response = geminiResponse.text()
       } else {
         const openai = new OpenAI({
-          apiKey: apiKey,
+          apiKey: api.apiKey,
           dangerouslyAllowBrowser: true,
         })
         const completion = await openai.chat.completions.create({
           model: "gpt-4o-mini",
-          messages: [
-            {
-              role: "user",
-              content: prompt
-            }
-          ],
+          messages: [{ role: "user", content: prompt }],
           temperature: 0.8,
           max_tokens: 1000
         })
         response = completion.choices[0].message.content
       }
 
-      setGeneratedMessage(response)
+      dispatch({ type: 'SET_GENERATED_MESSAGE', value: response })
     } catch (err) {
-      setError('Failed to generate message. Please check your API key and try again.')
+      dispatch({ 
+        type: 'SET_UI_STATE',
+        field: 'error',
+        value: 'Failed to generate message. Please check your API key and try again.'
+      })
       console.error('Error:', err)
     } finally {
-      setIsLoading(false)
+      dispatch({ type: 'SET_UI_STATE', field: 'isLoading', value: false })
     }
   }
 
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(generatedMessage)
-      setCopySuccess(true)
-      setTimeout(() => setCopySuccess(false), 2000)
+      dispatch({ type: 'SET_UI_STATE', field: 'copySuccess', value: true })
+      setTimeout(() => {
+        dispatch({ type: 'SET_UI_STATE', field: 'copySuccess', value: false })
+      }, 2000)
     } catch (err) {
       console.error('Failed to copy:', err)
     }
@@ -151,18 +200,22 @@ function App() {
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-4xl font-bold">Hop On, Bro</h1>
         <button
-          onClick={() => setShowSettings(!showSettings)}
+          onClick={() => dispatch({ 
+            type: 'SET_UI_STATE',
+            field: 'showSettings',
+            value: !ui.showSettings
+          })}
           className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors"
         >
-          {showSettings ? 'Hide Settings' : 'Settings'}
+          {ui.showSettings ? 'Hide Settings' : 'Settings'}
         </button>
       </div>
 
-      {showSettings && (
+      {ui.showSettings && (
         <Settings 
-          apiKey={apiKey} 
+          apiKey={api.apiKey} 
           onApiKeyChange={handleApiKeyChange}
-          aiProvider={aiProvider}
+          aiProvider={api.aiProvider}
           onAiProviderChange={handleAiProviderChange}
         />
       )}
@@ -170,35 +223,43 @@ function App() {
       <p className="text-lg text-gray-600 text-center mb-8">Guilt trip your friends into joining your game!</p>
       
       <MessageForm
-        userName={userName}
-        friendName={friendName}
-        gameName={gameName}
-        contentType={contentType}
-        tone={tone}
-        isLoading={isLoading}
+        userName={form.userName}
+        friendName={form.friendName}
+        gameName={form.gameName}
+        contentType={form.contentType}
+        tone={form.tone}
+        isLoading={ui.isLoading}
         onInputChange={handleInputChange}
-        onContentTypeChange={(e) => setContentType(e.target.value)}
-        onToneChange={(e) => setTone(e.target.value)}
+        onContentTypeChange={(e) => dispatch({ 
+          type: 'SET_FORM_FIELD',
+          field: 'contentType',
+          value: e.target.value
+        })}
+        onToneChange={(e) => dispatch({ 
+          type: 'SET_FORM_FIELD',
+          field: 'tone',
+          value: e.target.value
+        })}
         onSubmit={handleSubmit}
         toneOptions={toneOptions}
       />
 
-      {isLoading && (
+      {ui.isLoading && (
         <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-md text-blue-700 text-center">
           {loadingMessages[Math.floor(Math.random() * loadingMessages.length)]}
         </div>
       )}
 
-      {error && (
+      {ui.error && (
         <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-md text-red-700">
-          {error}
+          {ui.error}
         </div>
       )}
 
       <GeneratedMessage
         message={generatedMessage}
         onCopy={copyToClipboard}
-        copySuccess={copySuccess}
+        copySuccess={ui.copySuccess}
       />
       
       <div className="mt-8 text-center text-gray-500 text-sm">
