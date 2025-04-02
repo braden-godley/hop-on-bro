@@ -24,7 +24,7 @@ export const templates = [
     value: 'casual', 
     label: '👋 Casual Message',
     summary: 'A friendly, laid-back message to your gaming buddy.',
-    prompt: "Write a casual, friendly message (3-4 sentences) to convince someone to join a game. Emphasize how much fun they'll miss out on if they don't join, and how great it will be if they do."
+    prompt: "Write a casual, friendly message (6-7 sentences) to convince someone to join a game. Emphasize how much fun they'll miss out on if they don't join, and how great it will be if they do."
   },
   { 
     value: 'scientific', 
@@ -36,13 +36,13 @@ export const templates = [
     value: 'pirate', 
     label: '🏴‍☠️ Pirate',
     summary: 'A swashbuckling invitation from a salty sea dog.',
-    prompt: "Write as a pirate (2-3 sentences) to convince someone to join a game. Use nautical terms, pirate slang. Make vague threats about making them walk the plank or being marooned on a desert island if they refuse, while promising a share of the plunder if they join."
+    prompt: "Write as a pirate (6-7 sentences) to convince someone to join a game. Use nautical terms, pirate slang. Make vague threats about making them walk the plank or being marooned on a desert island if they refuse, while promising a share of the plunder if they join."
   },
   { 
     value: 'markTwain', 
     label: '📚 Mark Twain',
     summary: 'A witty invitation with the charm and humor of Mark Twain.',
-    prompt: "Write a Mark Twain-style message (3-4 sentences) to convince someone to join a game. Use the style of Mark Twain, with a mix of humor, irony, and wisdom. Include a witty observation about how those who refuse gaming invitations often find themselves on the wrong side of history, while those who accept discover treasures beyond measure."
+    prompt: "Write a Mark Twain-style message (6-7 sentences) to convince someone to join a game. Use the style of Mark Twain, with a mix of humor, irony, and wisdom. Include a witty observation about how those who refuse gaming invitations often find themselves on the wrong side of history, while those who accept discover treasures beyond measure."
   },
   { 
     value: 'haiku', 
@@ -60,7 +60,7 @@ export const templates = [
     value: 'medieval', 
     label: '👑 Medieval Proclamation',
     summary: 'A royal decree summoning thee to partake in gaming revelry.',
-    prompt: "Write a medieval proclamation (4-5 sentences) to convince someone to join a game. Use archaic language, formal titles, and royal decree style. Include threats of banishment from the realm for those who refuse the royal summons, while promising titles and lands for those who heed the call."
+    prompt: "Write a medieval proclamation (6-7 sentences) to convince someone to join a game. Use archaic language, formal titles, and royal decree style. Include threats of banishment from the realm for those who refuse the royal summons, while promising titles and lands for those who heed the call."
   },
   { 
     value: 'email', 
@@ -72,7 +72,7 @@ export const templates = [
     value: 'infomercial', 
     label: '📺 Infomercial',
     summary: 'An over-the-top TV sales pitch about the amazing benefits of gaming.',
-    prompt: "Write an infomercial-style message (4-5 sentences) to convince someone to join a game. Use over-the-top sales tactics, 'but wait, there's more!' moments, and dramatic before/after scenarios. Show exaggerated depictions of sad, lonely people who didn't join the game versus the amazing lives of those who did. Include a 'limited time offer' and 'act now' urgency."
+    prompt: "Write an infomercial-style message (6-7 sentences) to convince someone to join a game. Use over-the-top sales tactics, 'but wait, there's more!' moments, and dramatic before/after scenarios. Show exaggerated depictions of sad, lonely people who didn't join the game versus the amazing lives of those who did. Include a 'limited time offer' and 'act now' urgency."
   },
   {
     value: 'businessProposal',
@@ -90,19 +90,19 @@ export const templates = [
     value: 'draftNotice',
     label: '📜 Draft Notice',
     summary: 'An official military summons to gaming duty.',
-    prompt: "Write a military draft notice (3-4 sentences) ordering someone to join a game. Include official military letterhead elements, selective service numbers, and stern consequences for failure to comply. Specify court martial penalties for desertion and medals of honor for distinguished service. Use formal, bureaucratic language with military terminology while maintaining an underlying game-related context."
+    prompt: "Write a military draft notice (6-7 sentences) ordering someone to join a game. Include official military letterhead elements, selective service numbers, and stern consequences for failure to comply. Specify court martial penalties for desertion and medals of honor for distinguished service. Use formal, bureaucratic language with military terminology while maintaining an underlying game-related context."
   },
   {
     value: 'weatherReport',
     label: '⛅ Weather Forecast',
     summary: 'A meteorological prediction of perfect gaming conditions.',
-    prompt: "Write a weather forecast-style message (3-4 sentences) to convince someone to join a game. Use meteorological terms, forecast predictions, and weather presenter enthusiasm. Predict severe FOMO storms and social isolation fronts for those who don't join, with perfect gaming conditions and friendship highs for those who do."
+    prompt: "Write a weather forecast-style message (6-7 sentences) to convince someone to join a game. Use meteorological terms, forecast predictions, and weather presenter enthusiasm. Predict severe FOMO storms and social isolation fronts for those who don't join, with perfect gaming conditions and friendship highs for those who do."
   },
   {
     value: 'annoyingEmojis',
     label: '🤪 Annoying Emojis',
     summary: 'A message absolutely drowning in emojis.',
-    prompt: "Write a message with annoying emojis (3-4 sentences) to convince someone to join a game. Spam tons of emojis. Way too many emojis. Like at least 5 emojies per word. Use sad/crying emojis for missing out and happy/celebration emojis for joining. Make it clear through emojis alone how much better life is with gaming."
+    prompt: "Write a message with annoying emojis (6-7 sentences) to convince someone to join a game. Spam tons of emojis. Way too many emojis. Like at least 5 emojies per word. Use sad/crying emojis for missing out and happy/celebration emojis for joining. Make it clear through emojis alone how much better life is with gaming."
   },
   {
     value: 'coverLetter',
@@ -126,13 +126,13 @@ export const templates = [
     value: 'mafioso',
     label: '🤌 Italian Mafioso',
     summary: 'An offer to join the gaming family that you cannot refuse.',
-    prompt: "Write a message (4-5 sentences) in the style of an Italian mafia boss. Use phrases like 'capisce?', 'wise guy', and 'family business'. Make vague references to 'protection' and 'insurance'. Emphasize loyalty, family, and respect while subtly implying consequences for not joining. Include Italian words and phrases. The tone should be both friendly and menacing, like you're making them an offer they can't refuse. Make it clear that refusing the family's invitation would be... unfortunate."
+    prompt: "Write a message (6-7 sentences) in the style of an Italian mafia boss. Use phrases like 'capisce?', 'wise guy', and 'family business'. Make vague references to 'protection' and 'insurance'. Emphasize loyalty, family, and respect while subtly implying consequences for not joining. Include Italian words and phrases. The tone should be both friendly and menacing, like you're making them an offer they can't refuse. Make it clear that refusing the family's invitation would be... unfortunate."
   },
   {
     value: 'courtOrder',
     label: '🔨 Court Order',
     summary: 'A legal mandate requiring immediate gaming participation.',
-    prompt: "Write a formal court order (4-5 sentences) mandating participation in the game. Include case numbers, legal citations, and formal judicial language. Use phrases like 'hereby ordered', 'pursuant to', and 'failure to comply'. End with a stern warning about contempt of court and potential sanctions, including fines and imprisonment. The tone should be strictly authoritative, formal, and official. Specify exact penalties for non-compliance."
+    prompt: "Write a formal court order (6-7 sentences) mandating participation in the game. Include case numbers, legal citations, and formal judicial language. Use phrases like 'hereby ordered', 'pursuant to', and 'failure to comply'. End with a stern warning about contempt of court and potential sanctions, including fines and imprisonment. The tone should be strictly authoritative, formal, and official. Specify exact penalties for non-compliance."
   },
   {
     value: 'freudian',
@@ -162,13 +162,13 @@ export const templates = [
     value: 'stateSurveillance',
     label: '🕵️ State Surveillance',
     summary: 'A cryptic warning from government agencies monitoring your gaming habits.',
-    prompt: "Write a message (4-5 sentences) as a state surveillance director. Begin by noting their concerning absence from recent gaming activities. Mention how closely their file is being monitored by certain government agencies at this time. Make it clear that their next moves are being watched very carefully, and that one wrong decision would be... most unfortunate. End with a thinly-veiled suggestion that immediate participation in the game would help their status considerably and might prevent certain... administrative actions. Make explicit mention of a government agency, like the CIA or NSA. Start message with a generic government email like 'lJEIanx9883uIpWz@protonmail.com'. The tone should be cold and methodical, like an internal memo about a person of particular interest."
+    prompt: "Write a message (6-7 sentences) as a state surveillance director. Begin by noting their concerning absence from recent gaming activities. Mention how closely their file is being monitored by certain government agencies at this time. Make it clear that their next moves are being watched very carefully, and that one wrong decision would be... most unfortunate. End with a thinly-veiled suggestion that immediate participation in the game would help their status considerably and might prevent certain... administrative actions. Make explicit mention of a government agency, like the CIA or NSA. Start message with a generic government email like 'lJEIanx9883uIpWz@protonmail.com'. The tone should be cold and methodical, like an internal memo about a person of particular interest."
   },
   {
     value: 'intervention',
     label: '🤗 Intervention',
     summary: 'A heartfelt group intervention about your concerning lack of gaming.',
-    prompt: "Write a message (4-5 sentences) in the style of a concerned friend staging an intervention. Start with 'We're all here today because we care about you...' and express deep worry about their lack of gaming in their life. Mention how their absence from gaming nights has affected everyone. Include phrases like 'hitting rock bottom', 'we just want what's best for you', and references to a 12-step program to gaming excellence. The tone should be earnest and emotional while completely inverting the usual intervention format to push them INTO gaming instead of away from it. Make it clear that if they don't accept help now, they may lose their gaming friends forever."
+    prompt: "Write a message (6-7 sentences) in the style of a concerned friend staging an intervention. Start with 'We're all here today because we care about you...' and express deep worry about their lack of gaming in their life. Mention how their absence from gaming nights has affected everyone. Include phrases like 'hitting rock bottom', 'we just want what's best for you', and references to a 12-step program to gaming excellence. The tone should be earnest and emotional while completely inverting the usual intervention format to push them INTO gaming instead of away from it. Make it clear that if they don't accept help now, they may lose their gaming friends forever."
   }
 ]
 
