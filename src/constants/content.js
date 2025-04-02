@@ -37,7 +37,7 @@ export const contentTypes = [
   { 
     value: 'email', 
     label: 'Marketing Email',
-    prompt: "Write a marketing email campaign (150-200 words) to convince someone to join a game. Use compelling subject lines, clear value propositions, engaging call-to-actions, and persuasive copywriting techniques. Include proper email sections like header, body, and footer. Keep the tone professional yet friendly."
+    prompt: "Write a marketing email campaign (150-200 words) to convince someone to join a game. Use compelling subject lines, bullet point lists of clear value propositions, engaging call-to-actions, and persuasive copywriting techniques. Include proper email sections like header, body, and footer. Keep the tone professional yet friendly."
   },
   { 
     value: 'infomercial', 
@@ -118,6 +118,11 @@ export const contentTypes = [
     value: 'stateSurveillance',
     label: 'State Surveillance',
     prompt: "Write a message (4-5 sentences) as a state surveillance director. Begin by noting their concerning absence from recent gaming activities. Mention how closely their file is being monitored by certain government agencies at this time. Make it clear that their next moves are being watched very carefully, and that one wrong decision would be... most unfortunate. End with a thinly-veiled suggestion that immediate participation in the game would help their status considerably. Make explicit mention of a government agency, like the CIA or NSA. Start message with a generic government email like 'lJEIanx9883uIpWz@protonmail.com'. The tone should be cold and methodical, like an internal memo about a person of particular interest."
+  },
+  {
+    value: 'intervention',
+    label: 'Intervention',
+    prompt: "Write a message (4-5 sentences) in the style of a concerned friend staging an intervention. Start with 'We're all here today because we care about you...' and express deep worry about their lack of gaming in their life. Mention how their absence from gaming nights has affected everyone. Include phrases like 'hitting rock bottom', 'we just want what's best for you', and references to a 12-step program to gaming excellence. The tone should be earnest and emotional while completely inverting the usual intervention format to push them INTO gaming instead of away from it."
   }
 ]
 
