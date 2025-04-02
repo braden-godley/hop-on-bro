@@ -55,6 +55,11 @@ export const contentTypes = [
     prompt: "Write a legal contract-style message (200-300 words) to convince someone to join a game. Include proper legal terminology, whereas clauses, terms and conditions, and signature blocks. Use formal legal language while maintaining a hint of humor."
   },
   {
+    value: 'draftNotice',
+    label: 'Draft Notice',
+    prompt: "Write a military draft notice (3-4 sentences) ordering someone to join a game. Include official military letterhead elements, selective service numbers, and stern consequences for failure to comply. Use formal, bureaucratic language with military terminology while maintaining an underlying game-related context."
+  },
+  {
     value: 'weatherReport',
     label: 'Weather Forecast',
     prompt: "Write a weather forecast-style message (3-4 sentences) to convince someone to join a game. Use meteorological terms, forecast predictions, and weather presenter enthusiasm."
