@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { contentTypes } from '../constants/content'
+import StyleSelector from './StyleSelector'
 
 const MessageForm = ({
   userName,
@@ -14,6 +15,13 @@ const MessageForm = ({
   onSubmit,
   toneOptions
 }) => {
+  const [isStyleSelectorOpen, setIsStyleSelectorOpen] = useState(false)
+  const selectedStyle = contentTypes.find(type => type.value === contentType)
+
+  const handleStyleSelect = (value) => {
+    onContentTypeChange({ target: { value } })
+  }
+
   return (
     <form onSubmit={onSubmit} className="space-y-6">
       <div>
@@ -56,24 +64,28 @@ const MessageForm = ({
       </div>
 
       <div>
-        <label htmlFor="contentType" className="block text-sm font-medium text-gray-700 mb-2">Message Style</label>
-        <select
-          id="contentType"
-          value={contentType}
-          onChange={onContentTypeChange}
-          required
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        <label className="block text-sm font-medium text-gray-700 mb-2">Message Style</label>
+        <button
+          type="button"
+          onClick={() => setIsStyleSelectorOpen(true)}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md text-left focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:bg-gray-50"
         >
-          {contentTypes.map((type) => (
-            <option key={type.value} value={type.value}>
-              {type.label}
-            </option>
-          ))}
-        </select>
+          <span className="font-medium">{selectedStyle?.label || 'Choose a style'}</span>
+          <p className="text-sm text-gray-500 truncate mt-1">
+            {selectedStyle?.prompt.split('.')[0]}.
+          </p>
+        </button>
       </div>
 
+      <StyleSelector
+        isOpen={isStyleSelectorOpen}
+        onClose={() => setIsStyleSelectorOpen(false)}
+        onSelect={handleStyleSelect}
+        selectedValue={contentType}
+      />
+
       <div>
-        <label htmlFor="desperationLevel" className="block text-sm font-medium text-gray-700 mb-2">
+        <label className="block text-sm font-medium text-gray-700 mb-2">
           Tone
         </label>
         <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
