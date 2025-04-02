@@ -28,7 +28,8 @@ const initialState = {
   },
   ui: {
     showSettings: false,
-    copySuccess: false
+    copySuccess: false,
+    currentTagline: getRandomTagline()
   }
 }
 
@@ -100,7 +101,8 @@ function App() {
         },
         ui: {
           ...ui,
-          showSettings: !storedKey
+          showSettings: !storedKey,
+          currentTagline: getRandomTagline()
         }
       }
     })
@@ -128,7 +130,19 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await generate(form)
+    try {
+      await generate({
+        userName: form.userName,
+        friendName: form.friendName,
+        gameName: form.gameName,
+        contentType: form.contentType,
+        tone: form.tone
+      })
+      // Update tagline when new message is generated
+      dispatch({ type: 'SET_UI_STATE', field: 'currentTagline', value: getRandomTagline() })
+    } catch (err) {
+      console.error('Error:', err)
+    }
   }
 
   const copyToClipboard = async () => {
@@ -168,7 +182,7 @@ function App() {
         />
       )}
 
-      <p className="text-lg text-gray-600 text-center mb-8">{getRandomTagline()}</p>
+      <p className="text-lg text-gray-600 text-center mb-8">{ui.currentTagline}</p>
       
       <MessageForm
         userName={form.userName}
