@@ -109,6 +109,11 @@ export const contentTypes = [
     label: 'Mother',
     prompt: "Write a message (4-5 sentences) in the style of a concerned mother. Use phrases like 'I raised you better than this', 'after all I've done for you', and 'I'm not angry, just disappointed'. Express worry about their social life and gaming habits. Mention how you haven't heard from them in a while. Include typical motherly concerns about their health, eating habits, and whether they're getting enough sleep. Add some guilt about how much you've sacrificed for them. The tone should be a mix of loving concern and passive-aggressive guilt-tripping."
   },
+  {
+    value: 'nigerianPrince',
+    label: 'Nigerian Prince Scam',
+    prompt: "Write a message (4-5 sentences) in the style of a Nigerian prince scam email. Begin by introducing yourself as a Nigerian prince or government official. Use formal yet slightly awkward English with occasional grammatical errors. Include mentions of large sums of money in Nigerian Naira or US dollars, urgent business proposals, and requests for assistance. Reference your position in Nigeria and current predicament preventing access to funds. End with a plea for partnership and vague promises of substantial rewards. Keep the tone professional but with telltale signs of the classic format."
+  }
 ]
 
 export const loadingMessages = [
