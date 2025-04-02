@@ -11,6 +11,8 @@ export const taglines = [
   'Diplomacy failed. Time for Plan B(ro).',
   'Manufacturing consent, one message at a time.',
   'Use our peer pressure algorithms today!',
+  'Peer pressure is just a click away.',
+  'Social engineering distilled into an art form.',
   'Resistance is futile.',
   'Turning peer pressure into a high score.',
   'Generate the perfect ethically questionable game invite.',
