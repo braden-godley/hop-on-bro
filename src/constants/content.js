@@ -155,8 +155,8 @@ export const templates = [
   {
     value: 'hrComplaint',
     label: 'HR Complaint',
-    summary: 'A formal workplace grievance about non-participation in gaming activities.',
-    prompt: "Write a formal HR complaint (4-5 sentences) about someone not joining the game. Include typical HR formatting with date, subject line, and incident details. Reference workplace policies, team morale impact, and previous verbal warnings. Request an immediate investigation and corrective action. Use corporate HR jargon like 'hostile work environment', 'employee engagement', and 'workplace culture'. The tone should be passive-aggressive and overly formal while treating gaming as a serious workplace obligation."
+    summary: 'A formal workplace grievance threatening termination for non-participation in gaming activities.',
+    prompt: "Write a formal HR complaint (4-5 sentences) about someone not joining the game. Include typical HR formatting with date, subject line, and incident details. Reference workplace policies, team morale impact, and previous verbal warnings. Strongly suggest immediate termination if they don't join the game. Use corporate HR jargon like 'gross misconduct', 'violation of core values', and 'irreparable damage to company culture'. The tone should be coldly professional while treating gaming as a serious fireable offense. End with a clear recommendation for termination unless immediate corrective action (joining the game) is taken."
   },
   {
     value: 'stateSurveillance',
