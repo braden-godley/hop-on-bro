@@ -1,4 +1,4 @@
-export const contentTypes = [
+export const templates = [
   { 
     value: 'casual', 
     label: 'Casual Message',

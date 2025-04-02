@@ -4,7 +4,7 @@ import OpenAI from 'openai'
 import Settings from './components/Settings'
 import MessageForm from './components/MessageForm'
 import GeneratedMessage from './components/GeneratedMessage'
-import { contentTypes, loadingMessages, tones } from './constants/content'
+import { templates, loadingMessages, tones } from './constants/content'
 import { generatePrompt } from './utils/promptUtils'
 
 // Create UI-friendly tones array
@@ -96,7 +96,7 @@ function App() {
     }
     
     try {
-      const contentTypeName = contentTypes.find(type => type.value === contentType)?.label || 'casual'
+      const contentTypeName = templates.find(type => type.value === contentType)?.label || 'casual'
       const prompt = generatePrompt(userName, friendName, gameName, desperationLevel, contentType, contentTypeName)
 
       console.log(prompt)

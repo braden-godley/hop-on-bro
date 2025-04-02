@@ -1,5 +1,5 @@
 import React from 'react'
-import { contentTypes } from '../constants/content'
+import { templates } from '../constants/content'
 
 const StyleSelector = ({ isOpen, onClose, onSelect, selectedValue }) => {
   if (!isOpen) return null
@@ -8,7 +8,7 @@ const StyleSelector = ({ isOpen, onClose, onSelect, selectedValue }) => {
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg p-6 w-[90vw] max-w-4xl max-h-[90vh] overflow-y-auto">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-semibold">Choose Message Style</h2>
+          <h2 className="text-2xl font-semibold">Choose Template</h2>
           <button
             onClick={onClose}
             className="text-gray-500 hover:text-gray-700"
@@ -20,7 +20,7 @@ const StyleSelector = ({ isOpen, onClose, onSelect, selectedValue }) => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {contentTypes.map((type) => (
+          {templates.map((type) => (
             <button
               key={type.value}
               onClick={() => {

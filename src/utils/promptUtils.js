@@ -1,8 +1,8 @@
-import { tones, contentTypes } from '../constants/content'
+import { tones, templates } from '../constants/content'
 
-export const getPromptForStyle = (style) => {
-  const contentType = contentTypes.find(type => type.value === style)
-  return contentType?.prompt || contentTypes[0].prompt
+export const getPrompt = (style) => {
+  const contentType = templates.find(type => type.value === style)
+  return contentType?.prompt || templates[0].prompt
 }
 
 export const generatePrompt = (userName, friendName, gameName, toneType, contentType, contentTypeName) => {
@@ -30,7 +30,7 @@ Generate a message that:
 </formatting>
 
 <content_style>
-${getPromptForStyle(contentType)}
+${getPrompt(contentType)}
 </content_style>
 
 <tone_guidelines>
