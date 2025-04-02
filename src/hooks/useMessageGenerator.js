@@ -43,6 +43,12 @@ export const useMessageGenerator = ({ provider, apiKey }) => {
         response = completion.choices[0].message.content;
       }
 
+      // Normalize newlines and ensure proper Markdown line breaks
+      response = response.replaceAll('\r\n', '\n'); // Convert Windows style to Unix
+      response = response.replaceAll('\r', '\n');   // Convert old Mac style to Unix
+      response = response.split('\n').map(line => line.trim() + '  ').join('\n'); // Add two spaces at end of each line for Markdown
+
+      console.log(response);
       setMessage(response);
     } catch (err) {
       setError('Failed to generate message. Please check your API key and try again.');
