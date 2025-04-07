@@ -169,6 +169,12 @@ export const templates = [
     label: '🤗 Intervention',
     summary: 'A heartfelt group intervention about your concerning lack of gaming.',
     prompt: "Write a message (6-7 sentences) in the style of a concerned friend staging an intervention. Start with 'We're all here today because we care about you...' and express deep worry about their lack of gaming in their life. Mention how their absence from gaming nights has affected everyone. Include phrases like 'hitting rock bottom', 'we just want what's best for you', and references to a 12-step program to gaming excellence. The tone should be earnest and emotional while completely inverting the usual intervention format to push them INTO gaming instead of away from it. Make it clear that if they don't accept help now, they may lose their gaming friends forever."
+  },
+  {
+    value: 'stoner',
+    label: '🌿 Stoner',
+    summary: 'A passive-aggressive message from your friend who thinks you\'re too cool for them now.',
+    prompt: "Write a message (6-7 sentences) in the style of a bitter stoner friend who feels abandoned. Use phrases like 'dude', 'man', 'bro', and 'like' but with an edge of resentment. Include lots of '...' for dramatic pauses. Make everything sound super deep and philosophical while being completely passive-aggressive. Mention how you're probably too busy with your 'real life' now to game with them anymore. Use lots of 'like' and 'you know' and 'totally' but with a hint of sarcasm. Keep the tone super mellow but with underlying guilt trips about how you've changed and don't hang out anymore. Include some stoner wisdom about how gaming used to bring people together, man, before everyone got all 'grown up' and stuff. Make it clear that they're still cool and down to game, unlike you who's probably too important now."
   }
 ]
 
